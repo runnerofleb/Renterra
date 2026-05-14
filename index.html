@@ -6,30 +6,22 @@
   <title>Renterra BDR ICP Research & Call Playbook — Chris Khoury</title>
   <style>
     :root {
-      --bg: #030705;
-      --bg-2: #07120d;
-      --ink: #f4fff8;
-      --muted: #a9bbaf;
-      --soft: #769084;
-      --faint: #4f665b;
-      --green: #57ff95;
-      --green-2: #18d668;
-      --green-3: #c4ffd9;
-      --blue: #79d9ff;
-      --amber: #ffd166;
-      --red: #ff7a90;
-      --card: rgba(11, 24, 17, 0.78);
-      --card-2: rgba(17, 36, 27, 0.74);
-      --line: rgba(130, 255, 178, 0.14);
-      --line-2: rgba(130, 255, 178, 0.30);
-      --shadow: 0 28px 90px rgba(0, 0, 0, 0.48);
-      --glow: 0 0 46px rgba(87, 255, 149, 0.24);
-      --radius-xl: 34px;
-      --radius-lg: 24px;
-      --radius-md: 16px;
+      --navy: #103f47;
+      --navy-2: #0b3036;
+      --navy-3: #08262b;
+      --mint: #54dfb5;
+      --mint-soft: #dff9ef;
+      --cream: #f6f3ea;
+      --cream-2: #fffdf7;
+      --paper: #ffffff;
+      --ink: #132f35;
+      --muted: #5d7276;
+      --soft: #91a1a4;
+      --line: #dce7e4;
+      --shadow: 0 22px 62px rgba(16, 63, 71, .12);
+      --radius: 24px;
       --max: 1180px;
-      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Avenir Next", Avenir, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     }
 
@@ -37,552 +29,210 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background:
-        radial-gradient(circle at 12% -8%, rgba(87,255,149,.22), transparent 34rem),
-        radial-gradient(circle at 86% 3%, rgba(121,217,255,.11), transparent 30rem),
-        radial-gradient(circle at 50% 55%, rgba(87,255,149,.06), transparent 42rem),
-        linear-gradient(180deg, #06110c 0%, #030705 42%, #020403 100%);
+      background: var(--cream);
       color: var(--ink);
       font-family: var(--sans);
-      overflow-x: hidden;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .22;
-      background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: linear-gradient(to bottom, black, transparent 82%);
-      z-index: -1;
-    }
-
     a { color: inherit; text-decoration: none; }
     button { font: inherit; }
-    ::selection { background: rgba(87,255,149,.28); }
+    strong { color: var(--ink); }
 
-    .progress {
-      position: fixed;
-      inset: 0 auto auto 0;
-      height: 3px;
-      width: 0%;
-      background: linear-gradient(90deg, var(--green), var(--blue));
-      z-index: 1000;
-      box-shadow: 0 0 20px rgba(87,255,149,.7);
-    }
+    .progress { position: fixed; inset: 0 auto auto 0; height: 3px; width: 0%; background: var(--mint); z-index: 1000; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 
     .nav {
       position: sticky;
       top: 0;
       z-index: 999;
-      backdrop-filter: blur(20px);
-      background: rgba(3, 7, 5, 0.74);
-      border-bottom: 1px solid var(--line);
+      color: #fff;
+      background: rgba(16, 63, 71, .96);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(16px);
     }
     .nav-inner {
       max-width: var(--max);
       margin: 0 auto;
+      padding: 15px 24px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      padding: 14px 22px;
-    }
-    .brand {
-      display: flex;
       align-items: center;
-      gap: 11px;
-      min-width: max-content;
-      font-weight: 900;
-      letter-spacing: -0.04em;
+      gap: 24px;
     }
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.85), transparent 18%),
-        linear-gradient(135deg, var(--green), #0b8b45 72%);
-      box-shadow: var(--glow);
-      position: relative;
-    }
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      right: 7px;
-      bottom: 7px;
-      border-radius: 4px;
-      background: #041009;
-      opacity: .72;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 850; letter-spacing: -.035em; white-space: nowrap; }
+    .brand-icon { position: relative; width: 34px; height: 28px; flex: 0 0 auto; }
+    .brand-icon::before, .brand-icon::after { content: ""; position: absolute; left: 0; width: 32px; height: 7px; border-radius: 999px; transform-origin: right center; }
+    .brand-icon::before { top: 4px; background: #fff; transform: rotate(38deg); }
+    .brand-icon::after { bottom: 4px; background: var(--mint); transform: rotate(-38deg); }
+    .nav-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
     .nav-links a, .nav-links button {
       border: 1px solid transparent;
-      background: transparent;
-      color: var(--muted);
-      padding: 9px 11px;
       border-radius: 999px;
+      background: transparent;
+      color: rgba(255,255,255,.82);
+      padding: 8px 10px;
       cursor: pointer;
       font-size: 13px;
-      transition: .22s ease;
+      font-weight: 760;
     }
-    .nav-links a:hover, .nav-links a.active, .nav-links button:hover {
-      color: var(--ink);
-      border-color: var(--line-2);
-      background: rgba(87,255,149,.08);
-    }
-
-    .section {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 100px 22px;
-      position: relative;
-    }
-    .section.compact { padding-top: 70px; }
-    .section-head {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(260px, 420px);
-      gap: 34px;
-      align-items: end;
-      margin-bottom: 30px;
-    }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      color: var(--green);
-      font-family: var(--mono);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .18em;
-      margin-bottom: 14px;
-    }
-    .eyebrow::before {
-      content: "";
-      width: 28px;
-      height: 1px;
-      background: var(--green);
-      box-shadow: 0 0 14px rgba(87,255,149,.85);
-    }
-    h1, h2, h3 { margin: 0; letter-spacing: -0.055em; }
-    h1 {
-      font-family: var(--serif);
-      font-size: clamp(58px, 10vw, 132px);
-      line-height: .86;
-      max-width: 1000px;
-    }
-    h2 {
-      font-size: clamp(36px, 5.8vw, 76px);
-      line-height: .94;
-      max-width: 860px;
-    }
-    h3 { font-size: 24px; line-height: 1.05; }
-    p { color: var(--muted); line-height: 1.66; margin: 0; }
-    .lead { font-size: clamp(18px, 2vw, 22px); max-width: 780px; }
-    .small { font-size: 14px; color: var(--soft); }
+    .nav-links a:hover, .nav-links a.active, .nav-links button:hover { color: #fff; background: rgba(84,223,181,.13); border-color: rgba(84,223,181,.32); }
 
     .hero {
-      max-width: none;
-      min-height: calc(100vh - 62px);
-      padding: 92px 22px 76px;
+      position: relative;
       overflow: hidden;
+      background: var(--navy);
+      color: #fff;
+      padding: 76px 0 70px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
     }
     .hero::before {
       content: "";
       position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(87,255,149,.13), transparent 40rem),
-        linear-gradient(120deg, rgba(87,255,149,.13), transparent 48%);
+      right: -270px;
+      top: -70px;
+      width: 780px;
+      height: 790px;
+      background: linear-gradient(135deg, transparent 0 36%, rgba(255,255,255,.075) 36% 100%);
+      transform: skewX(-5deg);
       pointer-events: none;
     }
-    .hero-grid {
-      max-width: var(--max);
-      margin: 0 auto;
-      position: relative;
-      display: grid;
-      grid-template-columns: minmax(0, 1.12fr) minmax(330px, .88fr);
-      gap: 38px;
-      align-items: center;
-    }
-    .kicker {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-      color: var(--green-3);
-      font-family: var(--mono);
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      font-size: 12px;
-    }
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid var(--line-2);
-      background: rgba(87,255,149,.08);
-      color: var(--green-3);
-      padding: 7px 11px;
-      border-radius: 999px;
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .hero-copy { position: relative; z-index: 2; }
-    .hero-copy h1 span { color: var(--green); font-style: italic; text-shadow: 0 0 40px rgba(87,255,149,.22); }
-    .hero-copy .lead { margin-top: 24px; }
-    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      border: 1px solid var(--line-2);
-      border-radius: 999px;
-      padding: 13px 18px;
-      color: var(--ink);
-      background: rgba(255,255,255,.04);
-      cursor: pointer;
-      transition: .22s ease;
-    }
-    .btn.primary {
-      color: #031008;
-      background: linear-gradient(135deg, var(--green), var(--green-2));
-      border-color: transparent;
-      font-weight: 900;
-      box-shadow: 0 16px 46px rgba(87,255,149,.24);
-    }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 18px 52px rgba(0,0,0,.35); }
-
-    .command-card {
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(16, 32, 24, .88), rgba(4, 10, 7, .80));
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      position: relative;
-      isolation: isolate;
-    }
-    .command-card::before {
-      content: "";
+    .hero::after {
+      content: "→ → → → → → → →\A→ → → → → → → →\A→ → → → → → → →\A→ → → → → → → →";
+      white-space: pre;
       position: absolute;
-      inset: -2px;
-      background: radial-gradient(circle at 32% 0%, rgba(87,255,149,.18), transparent 21rem);
+      right: 88px;
+      top: 112px;
+      color: rgba(255,255,255,.065);
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.38;
+      letter-spacing: 10px;
       pointer-events: none;
-      z-index: -1;
     }
-    .terminal-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--line);
-      padding: 16px 18px;
-      color: var(--soft);
-      font-family: var(--mono);
-      font-size: 12px;
-    }
-    .lights { display: flex; gap: 7px; }
-    .light { width: 9px; height: 9px; border-radius: 50%; background: var(--green); opacity: .85; box-shadow: 0 0 12px rgba(87,255,149,.6); }
-    .light:nth-child(2) { background: var(--amber); box-shadow: none; }
-    .light:nth-child(3) { background: var(--blue); box-shadow: none; }
-    .dashboard { padding: 20px; display: grid; gap: 14px; }
-    .metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .metric {
-      border: 1px solid var(--line);
-      background: rgba(87,255,149,.06);
-      border-radius: 18px;
-      padding: 16px;
-    }
-    .metric b { display:block; color: var(--green); font-size: 32px; letter-spacing: -.06em; }
-    .metric span { display:block; margin-top: 5px; color: var(--muted); font-size: 12px; line-height: 1.35; }
-    .mini-card {
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: rgba(255,255,255,.035);
-      padding: 18px;
-    }
-    .mini-card strong { display:block; color: var(--green); font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .14em; margin-bottom: 8px; }
-    .mini-card .big { font-family: var(--serif); color: var(--ink); font-size: 26px; line-height: 1.08; margin-bottom: 7px; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr) 390px; gap: 46px; align-items: stretch; }
+    .eyebrow { display: block; margin-bottom: 14px; color: var(--mint); font-family: var(--mono); font-size: 11px; font-weight: 850; letter-spacing: .15em; text-transform: uppercase; }
+    h1, h2, h3, h4 { margin: 0; }
+    h1 { max-width: 850px; color: #fff; font-size: clamp(44px, 5.6vw, 70px); line-height: 1.04; letter-spacing: -.052em; font-weight: 580; }
+    h1 strong { color: #fff; font-weight: 850; }
+    h2 { max-width: 810px; color: var(--ink); font-size: clamp(28px, 3.4vw, 44px); line-height: 1.08; letter-spacing: -.045em; font-weight: 850; }
+    h3 { color: var(--ink); font-size: 20px; line-height: 1.22; letter-spacing: -.025em; font-weight: 850; }
+    h4 { margin-bottom: 8px; color: var(--navy-2); font-family: var(--mono); font-size: 11px; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; }
+    p { margin: 0; color: var(--muted); }
+    .hero .lead { max-width: 740px; margin-top: 22px; color: rgba(255,255,255,.86); font-size: 19px; line-height: 1.58; font-weight: 500; }
+    .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .pill { display: inline-flex; align-items: center; border-radius: 999px; background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.16); color: #fff; padding: 8px 12px; font-size: 12px; font-weight: 850; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 999px; border: 2px solid var(--mint); background: var(--mint); color: var(--navy-3); padding: 12px 20px; cursor: pointer; font-weight: 900; letter-spacing: .01em; }
+    .btn.secondary { background: transparent; color: #fff; border-color: rgba(255,255,255,.30); }
 
+    .hero-card { display: grid; gap: 18px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 28px; padding: 24px; backdrop-filter: blur(10px); box-shadow: 0 24px 64px rgba(0,0,0,.18); }
+    .hero-card h3 { color: #fff; }
+    .hero-card p { color: rgba(255,255,255,.78); }
+    .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .stat { border-radius: 18px; border: 1px solid rgba(255,255,255,.13); background: rgba(255,255,255,.08); padding: 14px; }
+    .stat b { display: block; color: var(--mint); font-size: 30px; line-height: 1; letter-spacing: -.04em; }
+    .stat span { display: block; margin-top: 6px; color: rgba(255,255,255,.78); font-size: 12px; line-height: 1.25; }
+    .side-callout { padding-top: 17px; border-top: 1px solid rgba(255,255,255,.14); }
+    .side-callout strong { display: block; margin-bottom: 8px; color: var(--mint); font-family: var(--mono); font-size: 11px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+
+    section { padding: 66px 0; border-bottom: 1px solid var(--line); }
+    .section-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 420px); gap: 32px; align-items: end; margin-bottom: 28px; }
+    .section-head .lead { margin-top: 0; color: var(--muted); font-size: 17px; line-height: 1.58; }
     .grid { display: grid; gap: 18px; }
     .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .card {
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.035), transparent),
-        linear-gradient(180deg, var(--card), rgba(8,17,13,.74));
-      box-shadow: 0 14px 50px rgba(0,0,0,.23);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease, background .24s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 10% 0%, rgba(87,255,149,.08), transparent 14rem);
-      opacity: 0;
-      transition: .24s ease;
-      pointer-events: none;
-    }
-    .card:hover { transform: translateY(-5px); border-color: var(--line-2); box-shadow: 0 28px 80px rgba(0,0,0,.38); }
-    .card:hover::after { opacity: 1; }
-    .card h3 { margin-bottom: 10px; }
-    .icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 15px;
-      background: rgba(87,255,149,.12);
-      border: 1px solid var(--line-2);
-      display: grid;
-      place-items: center;
-      color: var(--green);
-      margin-bottom: 14px;
-      font-weight: 900;
-      font-family: var(--mono);
-      box-shadow: 0 0 26px rgba(87,255,149,.13);
-    }
 
-    .thesis {
-      border: 1px solid var(--line-2);
-      border-radius: var(--radius-xl);
-      padding: clamp(30px, 5vw, 58px);
-      background:
-        radial-gradient(circle at 100% 0%, rgba(121,217,255,.10), transparent 24rem),
-        linear-gradient(135deg, rgba(87,255,149,.13), rgba(255,255,255,.03)),
-        rgba(6, 16, 11, .88);
-      box-shadow: var(--shadow);
-      margin-top: 34px;
-    }
-    .thesis p {
-      font-family: var(--serif);
-      font-size: clamp(28px, 4vw, 54px);
-      line-height: 1.04;
-      letter-spacing: -.05em;
-      color: var(--ink);
-      max-width: 1040px;
-    }
-    .thesis em { color: var(--green); font-style: italic; }
+    .card, .table-card, .account-card, .play-card, .contact-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .card, .play-card, .contact-card { padding: 24px; }
+    .summary-card { border-left: 6px solid var(--mint); }
+    .soft-card { background: var(--mint-soft); border-color: #c6efe3; }
+    .soft-card h3, .soft-card p { color: var(--navy-2); }
+    .dark-card { background: var(--navy); border-color: var(--navy); }
+    .dark-card h3 { color: #fff; }
+    .dark-card p, .dark-card li { color: rgba(255,255,255,.78); }
+    .dark-card h4 { color: var(--mint); }
 
-    .score-table {
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: rgba(255,255,255,.03);
-      box-shadow: 0 18px 70px rgba(0,0,0,.22);
-    }
-    .score-row {
-      display: grid;
-      grid-template-columns: 1.2fr .45fr .85fr 1.4fr;
-      gap: 12px;
-      align-items: center;
-      padding: 18px 20px;
-      border-top: 1px solid var(--line);
-    }
-    .score-row:first-child { border-top: 0; }
-    .score-row.header { color: var(--soft); font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .12em; background: rgba(87,255,149,.06); }
-    .score { color: var(--green); font-size: 25px; font-weight: 950; letter-spacing: -.05em; }
-    .badge {
-      display: inline-flex;
-      width: fit-content;
-      border: 1px solid var(--line-2);
-      color: var(--green-3);
-      background: rgba(87,255,149,.08);
-      border-radius: 999px;
-      padding: 6px 9px;
-      font-size: 12px;
-      font-family: var(--mono);
-      text-transform: uppercase;
-      letter-spacing: .07em;
-    }
+    ul.clean { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
+    ul.clean li { position: relative; padding-left: 22px; color: var(--muted); }
+    ul.clean li::before { content: "→"; position: absolute; left: 0; color: var(--navy); font-weight: 900; }
+    .dark-card ul.clean li::before { color: var(--mint); }
 
-    .compare-card { display: grid; grid-template-columns: 1fr; gap: 14px; }
-    .label { color: var(--soft); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .12em; }
-    .angle {
-      border-left: 2px solid var(--green);
-      padding-left: 12px;
-      color: var(--green-3);
-    }
+    .score-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 20px; }
+    .score-card { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; padding: 22px; box-shadow: 0 10px 28px rgba(16, 63, 71, .08); }
+    .score-card b { display: block; color: var(--navy); font-size: 28px; line-height: 1; margin-bottom: 8px; letter-spacing: -.04em; }
+    .score-card span { color: var(--muted); font-size: 13px; }
 
-    .account-shell { display: grid; gap: 18px; margin-top: 28px; }
-    details.account {
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(14,27,20,.92), rgba(5,10,7,.78));
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: 0 20px 70px rgba(0,0,0,.26);
-    }
-    details.account[open] { border-color: var(--line-2); }
-    details.account.featured {
-      background:
-        radial-gradient(circle at 100% 0%, rgba(87,255,149,.18), transparent 25rem),
-        radial-gradient(circle at 0% 100%, rgba(121,217,255,.08), transparent 25rem),
-        linear-gradient(180deg, rgba(14,27,20,.96), rgba(5,10,7,.82));
-    }
-    .account summary {
-      cursor: pointer;
-      list-style: none;
-      padding: 26px;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 18px;
-      align-items: center;
-    }
-    .account summary::-webkit-details-marker { display: none; }
-    .rank {
-      width: 56px;
-      height: 56px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      color: #031008;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.8), transparent 20%),
-        linear-gradient(135deg, var(--green), var(--green-2));
-      font-weight: 950;
-      font-size: 20px;
-      box-shadow: 0 0 32px rgba(87,255,149,.25);
-    }
-    .account-title p { margin-top: 6px; }
-    .score-badge { text-align: right; }
-    .score-badge b { display: block; color: var(--green); font-size: 34px; line-height: 1; letter-spacing: -.06em; }
-    .score-badge span { color: var(--soft); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .12em; }
-    .account-body { padding: 0 26px 26px; }
-    .account-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; }
-    .subcard {
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: rgba(255,255,255,.032);
-      padding: 18px;
-    }
-    .subcard h4, .module h4 {
-      margin: 0 0 12px;
-      color: var(--green);
-      font-family: var(--mono);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .14em;
-    }
-    .kv { display: grid; grid-template-columns: 112px 1fr; gap: 8px; padding: 9px 0; border-top: 1px solid var(--line); }
-    .kv:first-of-type { border-top: 0; }
-    .kv b { color: var(--soft); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
-    ul.clean { margin: 0; padding: 0; list-style: none; display: grid; gap: 9px; }
-    ul.clean li { color: var(--muted); line-height: 1.5; padding-left: 20px; position: relative; }
-    ul.clean li::before { content: "→"; position: absolute; left: 0; color: var(--green); }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .chip { border: 1px solid var(--line); background: rgba(87,255,149,.07); color: var(--green-3); border-radius: 999px; padding: 8px 10px; font-size: 13px; }
-    .quote {
-      border: 1px dashed var(--line-2);
-      background: rgba(87,255,149,.06);
-      border-radius: 20px;
-      padding: 18px;
-      color: var(--ink);
-      font-family: var(--serif);
-      font-size: 20px;
-      line-height: 1.35;
-      letter-spacing: -.03em;
-    }
+    .table-card { overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; color: var(--muted); font-size: 14px; }
+    th { background: #eef5ee; color: var(--navy-2); font-family: var(--mono); font-size: 11px; letter-spacing: .10em; text-transform: uppercase; }
+    tr:last-child td { border-bottom: 0; }
+    td strong { color: var(--ink); }
+    .priority { display: inline-flex; white-space: nowrap; border-radius: 999px; background: var(--mint-soft); color: var(--navy-2); padding: 6px 10px; font-size: 12px; font-weight: 900; }
 
-    .timeline { display: grid; gap: 16px; margin-top: 28px; }
-    .step { display: grid; grid-template-columns: 58px 1fr; gap: 16px; align-items: start; }
-    .step-num {
-      width: 58px;
-      height: 58px;
-      border-radius: 20px;
-      display: grid;
-      place-items: center;
-      color: #031008;
-      background: var(--green);
-      font-weight: 950;
-      font-size: 22px;
-      box-shadow: var(--glow);
-    }
+    .module-map { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .module { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 22px; box-shadow: 0 10px 26px rgba(16, 63, 71, .07); }
+    .module h3 { margin-bottom: 10px; }
 
-    details.objection {
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: rgba(255,255,255,.035);
-      overflow: hidden;
-      transition: .22s ease;
-    }
-    details.objection[open] { border-color: var(--line-2); background: rgba(87,255,149,.045); }
-    details.objection summary {
-      cursor: pointer;
-      list-style: none;
-      padding: 18px 20px;
-      color: var(--ink);
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      font-weight: 800;
-    }
-    details.objection summary::-webkit-details-marker { display: none; }
-    details.objection summary::after { content: "+"; color: var(--green); font-size: 22px; line-height: 1; }
-    details.objection[open] summary::after { content: "−"; }
-    .objection div { padding: 0 20px 20px; }
+    .account-stack { display: grid; gap: 22px; }
+    .account-card { overflow: hidden; }
+    .account-header { display: grid; grid-template-columns: auto 1fr auto; gap: 22px; align-items: center; padding: 23px; background: #fbfcf8; border-bottom: 1px solid var(--line); }
+    .account-num { color: var(--navy); font-size: 42px; font-weight: 900; letter-spacing: -.06em; line-height: .9; }
+    .account-header p { margin-top: 5px; }
+    .account-body { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 23px; }
+    .field { border-radius: 18px; border: 1px solid var(--line); background: #fff; padding: 18px; }
+    .field.full { grid-column: 1 / -1; }
+    .field p { color: var(--muted); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { display: inline-flex; align-items: center; border-radius: 999px; background: #edf7f2; color: var(--navy-2); padding: 7px 10px; font-size: 12px; font-weight: 850; }
+    .field-list { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
+    .field-list li { position: relative; padding-left: 20px; color: var(--muted); }
+    .field-list li::before { content: "•"; position: absolute; left: 0; color: var(--navy); font-weight: 900; }
 
-    .pain-map { display: grid; gap: 10px; }
-    .pain-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: rgba(255,255,255,.03);
-      padding: 14px;
-    }
-    .pain-row .trigger { color: var(--ink); font-weight: 800; }
-    .pain-row .anchor { color: var(--green-3); }
+    .play-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+    .step { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 18px; box-shadow: 0 10px 26px rgba(16, 63, 71, .07); }
+    .step b { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 999px; background: var(--navy); color: #fff; margin-bottom: 12px; }
 
-    .footer {
-      border-top: 1px solid var(--line);
-      margin-top: 70px;
-      padding: 48px 22px;
-      color: var(--muted);
-      background: rgba(0,0,0,.24);
-    }
-    .footer-inner { max-width: var(--max); margin: 0 auto; display: grid; gap: 20px; }
-    .sources { columns: 2; column-gap: 28px; }
-    .sources li { break-inside: avoid; margin-bottom: 10px; color: var(--muted); line-height: 1.5; }
+    .quote-box { background: var(--navy); border-color: var(--navy); color: #fff; }
+    .quote-box h3, .quote-box h4 { color: var(--mint); }
+    .quote-box p { color: rgba(255,255,255,.84); }
 
-    @media (max-width: 900px) {
-      .hero-grid, .grid.two, .grid.three, .grid.four, .account-grid, .section-head { grid-template-columns: 1fr; }
-      .score-row { grid-template-columns: 1fr; }
-      .metric-grid { grid-template-columns: 1fr; }
-      .account summary { grid-template-columns: 1fr; }
-      .score-badge { text-align: left; }
+    .contact-card a { color: var(--navy); font-weight: 850; }
+    .contact-list { display: grid; gap: 10px; margin-top: 12px; }
+    .contact-row { display: grid; grid-template-columns: 98px 1fr; gap: 10px; font-size: 14px; color: var(--muted); }
+    .contact-row b { color: var(--ink); }
+
+    .footer { padding: 52px 0 68px; color: var(--muted); }
+    .sources { columns: 2; column-gap: 32px; margin-top: 18px; padding-left: 18px; }
+    .sources li { break-inside: avoid; margin-bottom: 10px; }
+
+    @media (max-width: 960px) {
       .nav-inner { align-items: flex-start; flex-direction: column; }
       .nav-links { justify-content: flex-start; }
-      .pain-row { grid-template-columns: 1fr; }
+      .hero { padding: 54px 0; }
+      .hero-grid, .section-head, .grid.two, .grid.three, .grid.four, .account-body, .score-grid, .module-map, .play-grid { grid-template-columns: 1fr; }
+      .account-header { grid-template-columns: 1fr; }
+      .stat-grid { grid-template-columns: 1fr; }
       .sources { columns: 1; }
-      .section { padding: 72px 18px; }
+      table, thead, tbody, th, td, tr { display: block; }
+      thead { display: none; }
+      tr { border-bottom: 1px solid var(--line); padding: 10px 0; }
+      td { border-bottom: 0; padding: 8px 16px; }
+      td::before { content: attr(data-label); display: block; color: var(--soft); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .10em; margin-bottom: 2px; }
+      .contact-row { grid-template-columns: 1fr; gap: 2px; }
     }
 
     @media print {
       .nav, .progress, .cta-row { display: none !important; }
       body { background: #fff; color: #111; }
-      .section { padding: 36px 0; max-width: 100%; }
-      .card, .subcard, details.account, .command-card, .thesis { break-inside: avoid; box-shadow: none; }
+      .hero { background: #fff; color: #111; padding: 24px 0; }
+      .hero h1, .hero-card h3 { color: #111; }
+      .hero .lead, .hero-card p { color: #555; }
+      section { padding: 28px 0; }
+      .card, .hero-card, .table-card, .account-card, .field, .score-card, .module, .step, .contact-card { box-shadow: none; break-inside: avoid; }
       * { color-adjust: exact; -webkit-print-color-adjust: exact; }
     }
   </style>
@@ -592,247 +242,292 @@
 
   <nav class="nav" aria-label="Primary navigation">
     <div class="nav-inner">
-      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span><span>Renterra ICP</span></a>
+      <a class="brand" href="#top"><span class="brand-icon" aria-hidden="true"></span><span>Renterra ICP</span></a>
       <div class="nav-links" id="navLinks">
         <a href="#thesis">Thesis</a>
         <a href="#summary">Summary</a>
         <a href="#landscape">Landscape</a>
         <a href="#accounts">Accounts</a>
+        <a href="#contacts">Contacts</a>
         <a href="#playbook">Playbook</a>
-        <a href="#objections">Objections</a>
         <a href="#gameday">Game Day</a>
         <button type="button" onclick="window.print()">Print Brief</button>
       </div>
     </div>
   </nav>
 
-  <main id="top">
-    <section class="section hero" aria-labelledby="hero-title">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <div class="kicker"><span class="pill">Renterra BDR Mock Exercise</span><span>Chris Khoury</span></div>
-          <h1 id="hero-title">ICP Research <span>&amp;</span> Call Playbook</h1>
-          <p class="lead">A clear account strategy for Renterra: four strong rental-company targets, why each one fits, what pain to listen for, and how to earn the next meeting.</p>
-          <div class="cta-row">
-            <a class="btn primary" href="#accounts">View Accounts</a>
-            <a class="btn" href="#playbook">Call Playbook</a>
-            <button class="btn" type="button" onclick="window.print()">Print Brief</button>
+  <header class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Renterra BDR Mock Exercise · Chris Khoury</span>
+        <h1>ICP Research <strong>&amp;</strong> Call Playbook</h1>
+        <p class="lead">A clear account strategy for Renterra: four strong rental-company targets, why each one fits, who to contact, what pain to listen for, and how to earn the next meeting.</p>
+        <div class="meta">
+          <span class="pill">4 high-fit accounts</span>
+          <span class="pill">Hillview = primary target</span>
+          <span class="pill">Discovery-led</span>
+        </div>
+        <div class="cta-row">
+          <a class="btn" href="#accounts">View Accounts</a>
+          <a class="btn secondary" href="#contacts">Contact Info</a>
+          <a class="btn secondary" href="#playbook">Call Playbook</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="stat-grid">
+          <div class="stat"><b>4</b><span>High-fit accounts</span></div>
+          <div class="stat"><b>90+</b><span>ICP score range</span></div>
+          <div class="stat"><b>1</b><span>Primary target</span></div>
+        </div>
+        <div class="side-callout">
+          <strong>Simple thesis</strong>
+          <p>Renterra helps rental teams run cleaner: faster quotes, better inventory visibility, tighter dispatch, cleaner inspections, easier payments, and stronger follow-up.</p>
+        </div>
+        <div class="side-callout">
+          <strong>Best first call</strong>
+          <h3>Hillview Equipment</h3>
+          <p>Heavy-equipment rental, sales, transport, parts, service, and high-value machines make it the clearest fit.</p>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section id="thesis">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Strategic thesis</span>
+            <h2>The issue is not demand. It is execution.</h2>
+          </div>
+          <p class="lead">These companies already serve contractors. The opportunity is helping them move faster and reduce manual work across the rental process.</p>
+        </div>
+        <div class="grid four">
+          <div class="card"><h3>Fast quotes</h3><p>Get contractors a clean quote quickly, before the request goes cold.</p></div>
+          <div class="card"><h3>Clear inventory</h3><p>Know what is ready, rented, reserved, in service, in transport, or available.</p></div>
+          <div class="card"><h3>Better coordination</h3><p>Plan deliveries, pickups, extensions, and branch handoffs without chasing people.</p></div>
+          <div class="card"><h3>Cleaner revenue flow</h3><p>Connect inspections, invoices, payments, aging balances, and follow-up.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="summary">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Executive summary</span>
+            <h2>Four accounts with clear reasons to call.</h2>
+          </div>
+          <p class="lead">The goal is not to prove they are actively shopping. The goal is to pick accounts where Renterra can plausibly create operational lift, then validate the pain in discovery.</p>
+        </div>
+        <div class="grid two">
+          <div class="card summary-card">
+            <h3>What makes an account fit</h3>
+            <ul class="clean">
+              <li>Rental is a real part of the business.</li>
+              <li>They coordinate delivery, pickup, or transport.</li>
+              <li>They manage high-value equipment.</li>
+              <li>Service, inspections, and availability matter.</li>
+              <li>Contractors expect fast answers and follow-up.</li>
+            </ul>
+          </div>
+          <div class="card soft-card">
+            <h3>What makes the outreach credible</h3>
+            <ul class="clean">
+              <li>There is a specific reason to call.</li>
+              <li>The pain hypothesis is tied to their business model.</li>
+              <li>The discovery questions are practical.</li>
+              <li>The value map connects to confirmed pain.</li>
+              <li>The close is for a useful AE meeting, not a hard sell.</li>
+            </ul>
           </div>
         </div>
 
-        <aside class="command-card" aria-label="Strategy dashboard">
-          <div class="terminal-top"><div class="lights"><span class="light"></span><span class="light"></span><span class="light"></span></div><span>strategy command center</span></div>
-          <div class="dashboard">
-            <div class="metric-grid">
-              <div class="metric"><b>4</b><span>High-fit accounts</span></div>
-              <div class="metric"><b>90+</b><span>ICP score each</span></div>
-              <div class="metric"><b>1</b><span>Primary call target</span></div>
+        <div class="score-grid">
+          <div class="score-card"><b>Fit</b><span>Does this look like Renterra’s ICP?</span></div>
+          <div class="score-card"><b>Pain</b><span>What workflow may be difficult?</span></div>
+          <div class="score-card"><b>Proof</b><span>What public signal supports the hypothesis?</span></div>
+          <div class="score-card"><b>Next</b><span>What would I ask on the call?</span></div>
+        </div>
+
+        <div class="table-card" style="margin-top:22px">
+          <table>
+            <thead><tr><th>Account</th><th>Fit</th><th>Priority</th><th>Why it belongs</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Account"><strong>Hillview Equipment</strong></td><td data-label="Fit">96</td><td data-label="Priority"><span class="priority">Highest</span></td><td data-label="Why it belongs">Heavy-equipment rental + sales, New England coverage, transport, parts, and service.</td></tr>
+              <tr><td data-label="Account"><strong>Equipment East</strong></td><td data-label="Fit">94</td><td data-label="Priority"><span class="priority">Strategic</span></td><td data-label="Why it belongs">Multi-location dealer/rental business across Massachusetts and New Hampshire.</td></tr>
+              <tr><td data-label="Account"><strong>R.S. Rental &amp; Equipment</strong></td><td data-label="Fit">91</td><td data-label="Priority"><span class="priority">SMB ICP</span></td><td data-label="Why it belongs">Independent construction rental business with service, parts, and lean-team pressure.</td></tr>
+              <tr><td data-label="Account"><strong>ATS Equipment</strong></td><td data-label="Fit">90</td><td data-label="Priority"><span class="priority">Multi-branch</span></td><td data-label="Why it belongs">Four-branch construction rental and sales operation with coordination complexity.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="landscape">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Competitive landscape</span>
+            <h2>Renterra fits between manual work and heavy legacy systems.</h2>
+          </div>
+          <p class="lead">The winning message is simple: modern rental operations without the friction of paper, disconnected tools, or overly heavy software.</p>
+        </div>
+        <div class="grid three">
+          <div class="card"><h3>Paper / spreadsheets / QuickBooks</h3><p><strong>Likely situation:</strong> Small teams using multiple places to track the same work.</p><p style="margin-top:10px"><strong>Renterra angle:</strong> one system for quotes, inventory, dispatch, invoices, and follow-up.</p></div>
+          <div class="card"><h3>Point of Rental / Texada / InTempo</h3><p><strong>Likely situation:</strong> Existing rental systems that may feel heavy or clunky for mobile workflows.</p><p style="margin-top:10px"><strong>Renterra angle:</strong> cleaner UI, easier adoption, and a more modern daily experience.</p></div>
+          <div class="card"><h3>Quipli / EZRentOut / storefront tools</h3><p><strong>Likely situation:</strong> Cloud tools with overlap in online rentals and rental management.</p><p style="margin-top:10px"><strong>Renterra angle:</strong> sharper operating focus across follow-up, utilization, dispatch, and payments.</p></div>
+        </div>
+        <div class="module-map" style="margin-top:20px">
+          <div class="module"><h3>Front office</h3><p>Quotes, follow-up, storefront, customer portal.</p></div>
+          <div class="module"><h3>Operations</h3><p>Inventory, dispatch, inspections, maintenance.</p></div>
+          <div class="module"><h3>Money</h3><p>Invoices, payments, aging balances, utilization reporting.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="accounts">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Target accounts</span>
+            <h2>Account cards built for real discovery.</h2>
+          </div>
+          <p class="lead">Each account includes the sales hypothesis, potential pain, value map, discovery questions, opener, and contact information.</p>
+        </div>
+        <div class="account-stack">
+          <article class="account-card">
+            <div class="account-header"><div class="account-num">01</div><div><span class="eyebrow">Primary mock-call target</span><h3>Hillview Equipment</h3><p>Heavy equipment rental + sales · Milford, MA · New England coverage</p></div><span class="priority">96 ICP score</span></div>
+            <div class="account-body">
+              <div class="field"><h4>Business snapshot</h4><p>Renting, selling, and shipping used construction machinery since 1990. Fleet includes excavators, wheel loaders, dozers, skid steers, long-reach packages, transport, parts, and service.</p></div>
+              <div class="field"><h4>Contacts</h4><p>David Pyne, Pat Kennelly, <a href="mailto:info@hillviewequipment.com">info@hillviewequipment.com</a>, <a href="tel:+17747377433">(774) 737-7433</a>.</p></div>
+              <div class="field"><h4>Simple sales hypothesis</h4><p>Hillview may need a clear view of which machines are ready, rented, reserved, in transport, for sale, or down for service.</p></div>
+              <div class="field"><h4>Likely pain to validate</h4><ul class="field-list"><li>Knowing the true status of high-value machines</li><li>Coordinating transport across New England</li><li>Keeping inspection photos tied to the rental</li><li>Following up on contractor quotes quickly</li></ul></div>
+              <div class="field full"><h4>Renterra value map</h4><div class="tag-row"><span class="tag">Inventory status</span><span class="tag">Mobile inspections</span><span class="tag">Dispatch</span><span class="tag">Service logs</span><span class="tag">Quote-to-invoice</span></div></div>
+              <div class="field"><h4>Discovery questions</h4><ul class="field-list"><li>How do you track whether a machine is ready, rented, reserved, in transport, or down for service?</li><li>Where do inspection photos and condition notes live today?</li><li>What creates the most manual follow-up: quotes, insurance, delivery timing, or extensions?</li></ul></div>
+              <div class="field quote-box"><h4>Opener</h4><p>You rent and sell high-value machines across New England. I’m curious how your team keeps availability, transport, inspection, and service status lined up without extra manual work.</p></div>
             </div>
-            <div class="mini-card"><strong>Simple thesis</strong><p>Renterra helps rental teams run cleaner: faster quotes, better inventory visibility, tighter dispatch, cleaner inspections, easier payments, and stronger follow-up.</p></div>
-            <div class="mini-card"><strong>Best first call</strong><div class="big">Hillview Equipment</div><p>Heavy-equipment rental, sales, transport, parts, service, and high-value machines make it the clearest fit.</p></div>
-          </div>
-        </aside>
+          </article>
+
+          <article class="account-card">
+            <div class="account-header"><div class="account-num">02</div><div><span class="eyebrow">Strategic priority</span><h3>Equipment East</h3><p>DEVELON authorized dealer · Dracut, Brockton, Auburn MA + Bow NH</p></div><span class="priority">94 ICP score</span></div>
+            <div class="account-body">
+              <div class="field"><h4>Business snapshot</h4><p>Dealer/rental hybrid with multiple locations, rentals, leases, sales, parts, and service. Public estimates conflict, so scale should be treated as directional.</p></div>
+              <div class="field"><h4>Contacts</h4><p>Giovanni Albanese, Andrea Ciano, Gilda Albanese, <a href="mailto:gilda@equipmenteast.com">gilda@equipmenteast.com</a>, <a href="tel:+19784543320">(978) 454-3320</a>.</p></div>
+              <div class="field"><h4>Simple sales hypothesis</h4><p>The biggest opportunity is branch and team coordination: availability, rent-vs-lease decisions, service handoffs, and follow-up ownership.</p></div>
+              <div class="field"><h4>Likely pain to validate</h4><ul class="field-list"><li>Visibility across multiple locations</li><li>Rental workflows sitting next to sales, leasing, parts, and service</li><li>Follow-up across quote, delivery, and attachment fit</li><li>Handoffs between sales, rental, service, and billing</li></ul></div>
+              <div class="field full"><h4>Value map</h4><div class="tag-row"><span class="tag">Multi-location inventory</span><span class="tag">Quote pipeline</span><span class="tag">Rental/lease workflow</span><span class="tag">Service visibility</span><span class="tag">Customer portal</span></div></div>
+              <div class="field"><h4>Discovery questions</h4><ul class="field-list"><li>How do rental reps know what is available at another branch?</li><li>When a customer is deciding whether to rent or lease, how does the team track that?</li><li>Which handoff is hardest: sales to rental, rental to service, or rental to billing?</li></ul></div>
+              <div class="field quote-box"><h4>Opener</h4><p>With four sites, the challenge is not just renting equipment — it is keeping branch availability, quotes, service, parts, and follow-up in sync.</p></div>
+            </div>
+          </article>
+
+          <article class="account-card">
+            <div class="account-header"><div class="account-num">03</div><div><span class="eyebrow">Very strong SMB ICP</span><h3>R.S. Rental &amp; Equipment</h3><p>Construction equipment rentals, sales, service & parts · Somerset, MA</p></div><span class="priority">91 ICP score</span></div>
+            <div class="account-body">
+              <div class="field"><h4>Business snapshot</h4><p>Independent construction rental business with a broad fleet and likely lean-team operating pressure.</p></div>
+              <div class="field"><h4>Contacts</h4><p>Richard Sousa, <a href="tel:+18666505297">(866) 650-5297</a>, <a href="tel:+15086721051">(508) 672-1051</a>.</p></div>
+              <div class="field"><h4>Simple sales hypothesis</h4><p>The opportunity is reducing extra touches between quote, reservation, service readiness, pickup, extension, and payment.</p></div>
+              <div class="field"><h4>Likely pain to validate</h4><ul class="field-list"><li>A lean team handling quotes, counter work, service, and follow-up</li><li>Daily, weekly, and monthly rental terms</li><li>Items returning from rent that need service before the next customer</li><li>Manual back-and-forth around availability</li></ul></div>
+              <div class="field full"><h4>Value map</h4><div class="tag-row"><span class="tag">Faster quotes</span><span class="tag">Service handoff</span><span class="tag">Extension tracking</span><span class="tag">Payments</span><span class="tag">Customer self-service</span></div></div>
+              <div class="field"><h4>Discovery questions</h4><ul class="field-list"><li>How do you track daily, weekly, and monthly rentals today?</li><li>What happens when an item comes back and needs service before the next pickup?</li><li>How many touches does it take to get from request to reserved rental?</li></ul></div>
+              <div class="field quote-box"><h4>Opener</h4><p>For independent shops, the biggest win is often removing extra touches between quote, reservation, service readiness, pickup, and payment.</p></div>
+            </div>
+          </article>
+
+          <article class="account-card">
+            <div class="account-header"><div class="account-num">04</div><div><span class="eyebrow">Strong multi-branch ICP</span><h3>ATS Equipment</h3><p>Construction equipment rental + sales · Boston, Auburn, Rehoboth MA + Candia NH</p></div><span class="priority">90 ICP score</span></div>
+            <div class="account-body">
+              <div class="field"><h4>Business snapshot</h4><p>Independent multi-branch construction rental and sales operation with broad fleet categories, service, and parts.</p></div>
+              <div class="field"><h4>Contacts</h4><p>Brian M. Connolly; branch contacts include John Connolly, Peter Tarasuk, Mark Andrade, Mike Robinson; <a href="mailto:info@atsequipment.com">info@atsequipment.com</a>.</p></div>
+              <div class="field"><h4>Simple sales hypothesis</h4><p>The wedge is branch-to-branch visibility, quote routing, project-location ownership, and service status clarity.</p></div>
+              <div class="field"><h4>Likely pain to validate</h4><ul class="field-list"><li>Checking availability across branches</li><li>Handling categories from small tools to earthmoving</li><li>Routing quote requests when project location and billing address differ</li><li>Coordinating service, parts, and after-hours support</li></ul></div>
+              <div class="field full"><h4>Value map</h4><div class="tag-row"><span class="tag">Branch inventory</span><span class="tag">Quote workflow</span><span class="tag">Dispatch planning</span><span class="tag">Service status</span><span class="tag">CRM follow-up</span></div></div>
+              <div class="field"><h4>Discovery questions</h4><ul class="field-list"><li>Do branches see each other’s fleet, or is that handled by phone and text?</li><li>Where do quote requests go after a customer submits the website form?</li><li>How do you decide which branch owns follow-up when the jobsite is somewhere else?</li></ul></div>
+              <div class="field quote-box"><h4>Opener</h4><p>With four locations and a broad fleet, I’m curious where the team still relies on calls, texts, or manual work to coordinate availability and follow-up.</p></div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="thesis">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Strategic thesis</span>
-          <h2>The issue is not demand. It is execution.</h2>
+    <section id="contacts">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="eyebrow">Contact directory</span><h2>Quick contact view.</h2></div>
+          <p class="lead">A simple directory so the account research is immediately actionable.</p>
         </div>
-        <p class="lead">These companies already serve contractors. The opportunity is helping them move faster and reduce manual work across the rental process.</p>
-      </div>
-
-      <div class="thesis"><p>Renterra wins when a rental shop has enough demand, but the day-to-day workflow is still held together by <em>phone calls, spreadsheets, texts, memory, and manual follow-up.</em></p></div>
-
-      <div class="grid four" style="margin-top:18px">
-        <div class="card"><div class="icon">01</div><h3>Fast quotes</h3><p>Get a contractor a clean quote quickly, before the request goes cold.</p></div>
-        <div class="card"><div class="icon">02</div><h3>Clear inventory</h3><p>Know what is ready, rented, reserved, in service, in transport, or available.</p></div>
-        <div class="card"><div class="icon">03</div><h3>Better coordination</h3><p>Plan deliveries, pickups, extensions, and branch handoffs without chasing people.</p></div>
-        <div class="card"><div class="icon">04</div><h3>Cleaner revenue flow</h3><p>Connect inspections, invoices, payments, aging balances, and follow-up in one workflow.</p></div>
+        <div class="grid two">
+          <div class="contact-card"><h3>Hillview Equipment</h3><div class="contact-list"><div class="contact-row"><b>People</b><span>David Pyne, Pat Kennelly</span></div><div class="contact-row"><b>Email</b><a href="mailto:info@hillviewequipment.com">info@hillviewequipment.com</a></div><div class="contact-row"><b>Phone</b><a href="tel:+17747377433">(774) 737-7433</a></div><div class="contact-row"><b>Location</b><span>Milford, MA / New England</span></div></div></div>
+          <div class="contact-card"><h3>Equipment East</h3><div class="contact-list"><div class="contact-row"><b>People</b><span>Giovanni Albanese, Andrea Ciano, Gilda Albanese</span></div><div class="contact-row"><b>Email</b><a href="mailto:gilda@equipmenteast.com">gilda@equipmenteast.com</a></div><div class="contact-row"><b>Phone</b><a href="tel:+19784543320">(978) 454-3320</a></div><div class="contact-row"><b>Location</b><span>Dracut, Brockton, Auburn MA + Bow NH</span></div></div></div>
+          <div class="contact-card"><h3>R.S. Rental &amp; Equipment</h3><div class="contact-list"><div class="contact-row"><b>Person</b><span>Richard Sousa</span></div><div class="contact-row"><b>Email</b><span>Not found in research</span></div><div class="contact-row"><b>Phone</b><span><a href="tel:+18666505297">(866) 650-5297</a> / <a href="tel:+15086721051">(508) 672-1051</a></span></div><div class="contact-row"><b>Location</b><span>Somerset, MA</span></div></div></div>
+          <div class="contact-card"><h3>ATS Equipment</h3><div class="contact-list"><div class="contact-row"><b>People</b><span>Brian M. Connolly; John Connolly, Peter Tarasuk, Mark Andrade, Mike Robinson</span></div><div class="contact-row"><b>Email</b><a href="mailto:info@atsequipment.com">info@atsequipment.com</a></div><div class="contact-row"><b>Phone</b><span>Branch-specific numbers to confirm before outreach</span></div><div class="contact-row"><b>Location</b><span>Boston, Auburn, Rehoboth MA + Candia NH</span></div></div></div>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="summary">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Executive summary</span>
-          <h2>Four accounts with clear reasons to call.</h2>
+    <section id="playbook">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="eyebrow">Cold-call framework</span><h2>Five simple moves to earn the next call.</h2></div>
+          <p class="lead">The goal of the first call is not to sell the product. It is to get them talking, confirm one real pain point, and earn a short meeting with an AE.</p>
         </div>
-        <p class="lead">The goal is not to prove they are actively shopping. The goal is to pick accounts where Renterra can plausibly create operational lift, then validate the pain in discovery.</p>
-      </div>
-
-      <div class="grid two">
-        <div class="card"><h3>What makes an account fit</h3><ul class="clean"><li>Rental is a real part of the business</li><li>They coordinate delivery, pickup, or transport</li><li>They manage high-value equipment</li><li>Service, inspections, and availability matter</li><li>Contractors expect fast answers and follow-up</li></ul></div>
-        <div class="card"><h3>What makes the outreach credible</h3><ul class="clean"><li>There is a specific reason to call</li><li>The pain hypothesis is tied to their business model</li><li>The discovery questions are practical</li><li>The value map connects to confirmed pain</li><li>The close is for a useful AE meeting, not a hard sell</li></ul></div>
-      </div>
-
-      <div class="score-table" style="margin-top:24px">
-        <div class="score-row header"><span>Account</span><span>Fit</span><span>Priority</span><span>Why it belongs</span></div>
-        <div class="score-row"><strong>Hillview Equipment</strong><span class="score">96</span><span class="badge">Highest</span><p>Heavy-equipment rental + sales, New England coverage, transport, parts, and service.</p></div>
-        <div class="score-row"><strong>Equipment East</strong><span class="score">94</span><span class="badge">Strategic</span><p>Multi-location dealer/rental business across Massachusetts and New Hampshire.</p></div>
-        <div class="score-row"><strong>R.S. Rental &amp; Equipment</strong><span class="score">91</span><span class="badge">SMB ICP</span><p>Independent construction rental business with service, parts, and lean-team pressure.</p></div>
-        <div class="score-row"><strong>ATS Equipment</strong><span class="score">90</span><span class="badge">Multi-branch</span><p>Four-branch construction rental and sales operation with coordination complexity.</p></div>
+        <div class="play-grid">
+          <div class="step"><b>1</b><h3>Opener</h3><p>Name the cold call, ask for 30 seconds, and make it easy for them to say yes or no.</p></div>
+          <div class="step"><b>2</b><h3>Observation</h3><p>Use one specific detail about their business so they know the call is not random.</p></div>
+          <div class="step"><b>3</b><h3>Problem question</h3><p>Ask one clear question about how they run today. Then pause and listen.</p></div>
+          <div class="step"><b>4</b><h3>Value bridge</h3><p>Repeat their pain in plain English, then connect it to one Renterra capability.</p></div>
+          <div class="step"><b>5</b><h3>Close</h3><p>Ask for 20 minutes with an AE. Keep it low pressure and specific.</p></div>
+        </div>
+        <div class="grid two" style="margin-top:20px">
+          <div class="play-card quote-box"><h3>Cold opener</h3><p>Hey [Name], this is Chris from Renterra. I’ll be honest — this is a cold call. Mind if I take 30 seconds to explain why I’m calling, and then you can tell me if it is relevant?</p></div>
+          <div class="play-card quote-box"><h3>Low-pressure close</h3><p>I’m not trying to sell you on this call. I’d like to set up 20 minutes where an AE can show what this looks like for a shop like yours. If it is not useful, no harm done. Fair?</p></div>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="landscape">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Competitive landscape</span>
-          <h2>Renterra fits between manual work and heavy legacy systems.</h2>
+    <section id="objections">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="eyebrow">Pain mapping & objections</span><h2>Keep the conversation practical.</h2></div>
+          <p class="lead">Every response should stay grounded in their workflow: quotes, inventory, dispatch, inspections, billing, or follow-up.</p>
         </div>
-        <p class="lead">The winning message is simple: modern rental operations without the friction of paper, disconnected tools, or overly heavy software.</p>
-      </div>
-
-      <div class="grid three">
-        <div class="card compare-card"><h3>Paper / spreadsheets / QuickBooks</h3><p><span class="label">Likely situation</span><br>Small teams using multiple places to track the same work.</p><p class="angle">Renterra angle: one system for quotes, inventory, dispatch, invoices, and follow-up.</p></div>
-        <div class="card compare-card"><h3>Point of Rental Essentials</h3><p><span class="label">Likely situation</span><br>An existing system that may feel clunky or hard for mobile workflows.</p><p class="angle">Renterra angle: cleaner UI, easier adoption, and a more modern daily experience.</p></div>
-        <div class="card compare-card"><h3>Texada / InTempo</h3><p><span class="label">Likely situation</span><br>More established rental software for heavier operations.</p><p class="angle">Renterra angle: simpler workflow for independent and regional rental teams.</p></div>
-        <div class="card compare-card"><h3>Wynne RentalMan</h3><p><span class="label">Likely situation</span><br>Enterprise-grade rental ERP that can feel heavy for smaller operators.</p><p class="angle">Renterra angle: cloud-native workflow without the enterprise learning curve.</p></div>
-        <div class="card compare-card"><h3>Quipli / EZRentOut</h3><p><span class="label">Likely situation</span><br>Cloud rental tools with overlap in storefront and rental management.</p><p class="angle">Renterra angle: sharper operating focus across follow-up, utilization, dispatch, and payments.</p></div>
-        <div class="card compare-card"><h3>Renterra module map</h3><p><span class="label">Front office</span><br>Quotes, follow-up, storefront, customer portal.</p><p><span class="label">Operations</span><br>Inventory, dispatch, inspections, maintenance.</p><p><span class="label">Money</span><br>Invoices, payments, aging balances, utilization reporting.</p></div>
+        <div class="table-card">
+          <table>
+            <thead><tr><th>What I hear</th><th>Renterra angle / response</th></tr></thead>
+            <tbody>
+              <tr><td data-label="What I hear">“We’re still on paper and spreadsheets.”</td><td data-label="Response">One system for inventory, dispatch, and follow-up.</td></tr>
+              <tr><td data-label="What I hear">“Quotes go out and we forget about them.”</td><td data-label="Response">Automated quote follow-up by text and email.</td></tr>
+              <tr><td data-label="What I hear">“I don’t know what’s idle vs. what’s earning.”</td><td data-label="Response">Utilization and revenue-per-asset visibility.</td></tr>
+              <tr><td data-label="What I hear">“Inspection photos live on someone’s phone.”</td><td data-label="Response">Inspection photos tied directly to the rental contract.</td></tr>
+              <tr><td data-label="What I hear">“We already use Point of Rental / Texada.”</td><td data-label="Response">That makes sense. If you were starting from scratch today, would you choose the same setup again?</td></tr>
+              <tr><td data-label="What I hear">“Just send me an email.”</td><td data-label="Response">Happy to. So I send the right thing, should I focus on quotes, inventory, dispatch, inspections, or billing?</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="accounts">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Target accounts</span>
-          <h2>Account cards built for real discovery.</h2>
+    <section id="gameday">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="eyebrow">Game-day execution</span><h2>Hillview mock-call run-of-show.</h2></div>
+          <p class="lead">Lead with Hillview because the fit is easiest to explain: heavy equipment, high-value assets, transport, service, parts, and rental workflow complexity.</p>
         </div>
-        <p class="lead">Open each account to see the sales hypothesis, likely pain, value map, discovery questions, and call opener.</p>
-      </div>
-
-      <div class="account-shell">
-        <details class="account featured" open>
-          <summary><div class="rank">01</div><div class="account-title"><span class="badge">Primary mock-call target</span><h3>Hillview Equipment</h3><p>Heavy equipment rental + sales · Milford, MA · New England coverage</p></div><div class="score-badge"><b>96</b><span>ICP score</span></div></summary>
-          <div class="account-body"><div class="account-grid"><div class="subcard"><h4>Business snapshot</h4><div class="kv"><b>Founded</b><p>Renting, selling, and shipping used construction machinery since 1990.</p></div><div class="kv"><b>Fleet</b><p>Excavators, wheel loaders, dozers, skid steers, long-reach packages, transport, parts, and service.</p></div><div class="kv"><b>Contacts</b><p>David Pyne, Pat Kennelly, info@hillviewequipment.com, (774) 737-7433.</p></div></div><div class="subcard"><h4>Simple sales hypothesis</h4><p>Hillview likely needs a clear view of which machines are ready, rented, reserved, in transport, for sale, or down for service.</p></div><div class="subcard"><h4>Likely pain</h4><ul class="clean"><li>Knowing the true status of high-value machines</li><li>Coordinating transport across New England</li><li>Keeping inspection photos tied to the rental</li><li>Following up on contractor quotes quickly</li></ul></div><div class="subcard"><h4>Renterra value map</h4><div class="chips"><span class="chip">Inventory status</span><span class="chip">Mobile inspections</span><span class="chip">Dispatch</span><span class="chip">Service logs</span><span class="chip">Quote-to-invoice</span></div></div><div class="subcard"><h4>Discovery questions</h4><ul class="clean"><li>How do you track whether a machine is ready, rented, reserved, in transport, or down for service?</li><li>Where do inspection photos and condition notes live today?</li><li>What creates the most manual follow-up: quotes, insurance, delivery timing, or extensions?</li></ul></div><div class="quote">You rent and sell high-value machines across New England. I’m curious how your team keeps availability, transport, inspection, and service status lined up without extra manual work.</div></div></div>
-        </details>
-
-        <details class="account">
-          <summary><div class="rank">02</div><div class="account-title"><span class="badge">Strategic priority</span><h3>Equipment East</h3><p>DEVELON authorized dealer · Dracut, Brockton, Auburn MA + Bow NH</p></div><div class="score-badge"><b>94</b><span>ICP score</span></div></summary>
-          <div class="account-body"><div class="account-grid"><div class="subcard"><h4>Business snapshot</h4><p>Dealer/rental hybrid with multiple locations, rentals, leases, sales, parts, and service. Public estimates conflict, so scale should be treated as directional.</p></div><div class="subcard"><h4>Simple sales hypothesis</h4><p>The biggest opportunity is branch and team coordination: availability, rent-vs-lease decisions, service handoffs, and follow-up ownership.</p></div><div class="subcard"><h4>Likely pain</h4><ul class="clean"><li>Visibility across multiple locations</li><li>Rental workflows sitting next to sales, leasing, parts, and service</li><li>Follow-up across quote, delivery, and attachment fit</li><li>Handoffs between sales, rental, service, and billing</li></ul></div><div class="subcard"><h4>Value map</h4><div class="chips"><span class="chip">Multi-location inventory</span><span class="chip">Quote pipeline</span><span class="chip">Rental/lease workflow</span><span class="chip">Service visibility</span><span class="chip">Customer portal</span></div></div><div class="subcard"><h4>Discovery questions</h4><ul class="clean"><li>How do rental reps know what is available at another branch?</li><li>When a customer is deciding whether to rent or lease, how does the team track that?</li><li>Which handoff is hardest: sales to rental, rental to service, or rental to billing?</li></ul></div><div class="quote">With four sites, the challenge is not just renting equipment — it is keeping branch availability, quotes, service, parts, and follow-up in sync.</div></div></div>
-        </details>
-
-        <details class="account">
-          <summary><div class="rank">03</div><div class="account-title"><span class="badge">Very strong SMB ICP</span><h3>R.S. Rental &amp; Equipment</h3><p>Construction equipment rentals, sales, service &amp; parts · Somerset, MA</p></div><div class="score-badge"><b>91</b><span>ICP score</span></div></summary>
-          <div class="account-body"><div class="account-grid"><div class="subcard"><h4>Business snapshot</h4><p>Independent construction rental business with a broad fleet and likely lean-team operating pressure.</p></div><div class="subcard"><h4>Simple sales hypothesis</h4><p>The opportunity is reducing extra touches between quote, reservation, service readiness, pickup, extension, and payment.</p></div><div class="subcard"><h4>Likely pain</h4><ul class="clean"><li>A lean team handling quotes, counter work, service, and follow-up</li><li>Daily, weekly, and monthly rental terms</li><li>Items returning from rent that need service before the next customer</li><li>Manual back-and-forth around availability</li></ul></div><div class="subcard"><h4>Value map</h4><div class="chips"><span class="chip">Faster quotes</span><span class="chip">Service handoff</span><span class="chip">Extension tracking</span><span class="chip">Payments</span><span class="chip">Customer self-service</span></div></div><div class="subcard"><h4>Discovery questions</h4><ul class="clean"><li>How do you track daily, weekly, and monthly rentals today?</li><li>What happens when an item comes back and needs service before the next pickup?</li><li>How many touches does it take to get from request to reserved rental?</li></ul></div><div class="quote">For independent shops, the biggest win is often removing extra touches between quote, reservation, service readiness, pickup, and payment.</div></div></div>
-        </details>
-
-        <details class="account">
-          <summary><div class="rank">04</div><div class="account-title"><span class="badge">Strong multi-branch ICP</span><h3>ATS Equipment</h3><p>Construction equipment rental + sales · Boston, Auburn, Rehoboth MA + Candia NH</p></div><div class="score-badge"><b>90</b><span>ICP score</span></div></summary>
-          <div class="account-body"><div class="account-grid"><div class="subcard"><h4>Business snapshot</h4><p>Independent multi-branch construction rental and sales operation with broad fleet categories, service, and parts.</p></div><div class="subcard"><h4>Simple sales hypothesis</h4><p>The wedge is branch-to-branch visibility, quote routing, project-location ownership, and service status clarity.</p></div><div class="subcard"><h4>Likely pain</h4><ul class="clean"><li>Checking availability across branches</li><li>Handling categories from small tools to earthmoving</li><li>Routing quote requests when project location and billing address differ</li><li>Coordinating service, parts, and after-hours support</li></ul></div><div class="subcard"><h4>Value map</h4><div class="chips"><span class="chip">Branch inventory</span><span class="chip">Quote workflow</span><span class="chip">Dispatch planning</span><span class="chip">Service status</span><span class="chip">CRM follow-up</span></div></div><div class="subcard"><h4>Discovery questions</h4><ul class="clean"><li>Do branches see each other’s fleet, or is that handled by phone and text?</li><li>Where do quote requests go after a customer submits the website form?</li><li>How do you decide which branch owns follow-up when the jobsite is somewhere else?</li></ul></div><div class="quote">With four locations and a broad fleet, I’m curious where the team still relies on calls, texts, or manual work to coordinate availability and follow-up.</div></div></div>
-        </details>
-      </div>
-    </section>
-
-    <section class="section" id="playbook">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Cold-call framework</span>
-          <h2>Five simple moves to earn the next call.</h2>
+        <div class="grid two">
+          <div class="card quote-box"><h3>Primary prompt</h3><p>I noticed Hillview rents, sells, transports, and services heavy equipment across New England. Usually at that point, the hard part is keeping machine availability, inspection condition, transport timing, and service status aligned. How are you managing that today?</p></div>
+          <div class="card"><h3>Listen for</h3><ul class="clean"><li>Manual availability checks</li><li>Inspection photos outside the rental workflow</li><li>Transport handled by text or whiteboard</li><li>Quote follow-up handled by memory</li><li>Service status not visible to the right people</li></ul></div>
+          <div class="card"><h3>Do</h3><ul class="clean"><li>Use the prospect’s name naturally</li><li>Match their pace</li><li>Let silence breathe</li><li>Take notes they can hear</li><li>Be honest if I do not know something</li></ul></div>
+          <div class="card"><h3>Don’t</h3><ul class="clean"><li>Pitch features too early</li><li>Use corporate jargon</li><li>Fill every silence</li><li>Guess on pricing</li><li>End without a clear next step</li></ul></div>
         </div>
-        <p class="lead">The goal of the first call is not to sell the product. It is to get them talking, confirm one real pain point, and earn a short meeting with an AE.</p>
       </div>
-
-      <div class="timeline">
-        <div class="step"><div class="step-num">1</div><div class="card"><h3>Opener</h3><p>Name the cold call, ask for 30 seconds, and make it easy for them to say yes or no.</p></div></div>
-        <div class="step"><div class="step-num">2</div><div class="card"><h3>Observation</h3><p>Use one specific detail about their business so they know the call is not random.</p></div></div>
-        <div class="step"><div class="step-num">3</div><div class="card"><h3>Problem question</h3><p>Ask one clear question about how they run today. Then pause and listen.</p></div></div>
-        <div class="step"><div class="step-num">4</div><div class="card"><h3>Value bridge</h3><p>Repeat their pain in plain English, then connect it to one Renterra capability.</p></div></div>
-        <div class="step"><div class="step-num">5</div><div class="card"><h3>Close</h3><p>Ask for 20 minutes with an AE. Keep it low pressure and specific.</p></div></div>
-      </div>
-
-      <div class="grid two" style="margin-top:18px"><div class="quote">Hey [Name], this is Chris from Renterra. I’ll be honest — this is a cold call. Mind if I take 30 seconds to explain why I’m calling, and then you can tell me if it is relevant?</div><div class="quote">I’m not trying to sell you on this call. I’d like to set up 20 minutes where an AE can show what this looks like for a shop like yours. If it is not useful, no harm done. Fair?</div></div>
-    </section>
-
-    <section class="section" id="objections">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Pain mapping & objections</span>
-          <h2>Keep the conversation practical.</h2>
-        </div>
-        <p class="lead">Every response should stay grounded in their workflow: quotes, inventory, dispatch, inspections, billing, or follow-up.</p>
-      </div>
-
-      <div class="pain-map">
-        <div class="pain-row"><div class="trigger">“We’re still on paper and spreadsheets.”</div><div class="anchor">One system for inventory, dispatch, and follow-up</div></div>
-        <div class="pain-row"><div class="trigger">“Quotes go out and we forget about them.”</div><div class="anchor">Automated quote follow-up by text and email</div></div>
-        <div class="pain-row"><div class="trigger">“I don’t know what’s idle vs. what’s earning.”</div><div class="anchor">Utilization and revenue-per-asset visibility</div></div>
-        <div class="pain-row"><div class="trigger">“Customers keep asking to book online.”</div><div class="anchor">Branded storefront and customer portal</div></div>
-        <div class="pain-row"><div class="trigger">“Billing is a mess at month-end.”</div><div class="anchor">Automated invoicing, payments, and aging balances</div></div>
-        <div class="pain-row"><div class="trigger">“We’re on Point of Rental but it’s clunky.”</div><div class="anchor">Modern UI, mobile-first workflow, lighter implementation</div></div>
-        <div class="pain-row"><div class="trigger">“Inspection photos live on someone’s phone.”</div><div class="anchor">Inspection photos tied directly to the rental contract</div></div>
-      </div>
-
-      <div class="grid two" style="margin-top:24px">
-        <details class="objection"><summary>“We’re all set / not interested.”</summary><div><p>Totally fair. Before I let you go, what is the biggest time-suck in the office right now? If it is not something we can help with, I will leave you alone.</p></div></details>
-        <details class="objection"><summary>“We already use Point of Rental / Texada.”</summary><div><p>That makes sense. If you were starting from scratch today, would you choose the same setup again? I’m mostly curious where the current system still creates friction.</p></div></details>
-        <details class="objection"><summary>“Just send me an email.”</summary><div><p>Happy to. So I send the right thing, which area should I focus on — quotes, inventory, dispatch, inspections, or billing?</p></div></details>
-        <details class="objection"><summary>“We’re too small for software.”</summary><div><p>That is usually when this starts to matter: small teams with enough asset volume that paper, spreadsheets, and manual follow-up start slowing things down.</p></div></details>
-        <details class="objection"><summary>“How much does it cost?”</summary><div><p>It depends on locations and asset count, so I do not want to guess. A short AE call would give you the workflow and a real number based on your setup.</p></div></details>
-        <details class="objection"><summary>“I’m too busy right now.”</summary><div><p>I hear you. Quick one — are you the right person for rental operations software, or is there someone else who owns that?</p></div></details>
-      </div>
-    </section>
-
-    <section class="section" id="gameday">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Game-day execution</span>
-          <h2>Hillview mock-call run-of-show.</h2>
-        </div>
-        <p class="lead">Lead with Hillview because the fit is easiest to explain: heavy equipment, high-value assets, transport, service, parts, and rental workflow complexity.</p>
-      </div>
-
-      <div class="quote">I noticed Hillview rents, sells, transports, and services heavy equipment across New England. Usually at that point, the hard part is keeping machine availability, inspection condition, transport timing, and service status aligned. How are you managing that today?</div>
-
-      <div class="grid three" style="margin-top:22px">
-        <div class="card"><h3>Listen for</h3><ul class="clean"><li>Manual availability checks</li><li>Inspection photos outside the rental workflow</li><li>Transport handled by text or whiteboard</li><li>Quote follow-up handled by memory</li><li>Service status not visible to the right people</li></ul></div>
-        <div class="card"><h3>Do</h3><ul class="clean"><li>Use the prospect’s name naturally</li><li>Match their pace</li><li>Let silence breathe</li><li>Take notes they can hear</li><li>Be honest if you do not know something</li></ul></div>
-        <div class="card"><h3>Don’t</h3><ul class="clean"><li>Pitch features too early</li><li>Use corporate jargon</li><li>Fill every silence</li><li>Guess on pricing</li><li>End without a clear next step</li></ul></div>
-      </div>
-
-      <div class="card" style="margin-top:18px"><h3>Day-of checklist</h3><ul class="clean"><li>Hillview account card open</li><li>Blank physical notepad and pen</li><li>Quiet room and strong audio</li><li>Water nearby</li><li>Two specific time slots ready for the close</li></ul></div>
     </section>
   </main>
 
   <footer class="footer" id="sources">
-    <div class="footer-inner">
-      <div><span class="eyebrow">Sources & notes</span><h2 style="font-size:42px">Clear, honest, and useful.</h2></div>
-      <p>Public employee and revenue estimates should be treated as directional. If sources disagree, the page should preserve that uncertainty instead of overstating precision. The point is to show strong account selection and call preparation; discovery validates the thesis.</p>
+    <div class="wrap">
+      <span class="eyebrow">Sources & notes</span>
+      <h2 style="font-size:34px">Clear, honest, and useful.</h2>
+      <p style="margin-top:14px">Public employee and revenue estimates should be treated as directional. If sources disagree, preserve that uncertainty instead of overstating precision. The point is to show strong account selection and call preparation; discovery validates the thesis.</p>
       <ul class="sources">
-        <li>Renterra platform notes: inventory, quotes, payments, dispatch, maintenance, inspections, storefront, and customer portal.</li>
-        <li>Hillview Equipment: company website, rental/services/contact information, and public professional profiles.</li>
-        <li>Equipment East: company website, rental/location information, BBB profile, and industry articles.</li>
-        <li>R.S. Rental & Equipment: company website, BBB profile, directory contact information, and public estimates labeled directional.</li>
-        <li>ATS Equipment: company website, BBB profile, directory estimates labeled directional, and public ownership/history references.</li>
-        <li>Competitive landscape: equipment rental software roundups and vendor positioning notes.</li>
-      </ul>
-      <p style="font-family:var(--mono); color:var(--green); text-transform:uppercase; letter-spacing:.14em; font-size:12px">Prepared for Renterra · Chris Khoury · BDR Mock Exercise</p>
-    </div>
-  </footer>
-
-  <script>
-    const progress = document.getElementById('progress');
-    const navLinks = Array.from(document.querySelectorAll('#navLinks a'));
-    const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-
-    function updateUI() {
-      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      progress.style.width = height ? `${(scrollTop / height) * 100}%` : '0%';
-
-      let current = sections[0];
-      for (const section of sections) {
-        if (section.offsetTop - 130 <= scrollTop) current = section;
-      }
-      navLinks.forEach(a => a.classList.toggle('active', current && a.getAttribute('href') === `#${current.id}`));
-    }
-
-    document.addEventListener('scroll', updateUI, { passive: true });
-    updateUI();
-  </script>
-</body>
-</html>
+        <li>Renterra platform notes: inventory, quotes, payments, dispatch, maintenance, inspections, storefront, and customer porta
