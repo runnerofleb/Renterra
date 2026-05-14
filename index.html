@@ -6,11 +6,13 @@
   <title>Renterra BDR ICP Research & Call Playbook — Chris Khoury</title>
   <style>
     :root {
-      --navy: #103f47;
-      --navy-2: #0b3036;
-      --navy-3: #08262b;
-      --mint: #54dfb5;
-      --mint-soft: #dff9ef;
+      --navy: #0e3f46;
+      --navy-2: #082f36;
+      --navy-3: #061f25;
+      --teal: #0f5861;
+      --mint: #55e0b5;
+      --mint-2: #a8f3d9;
+      --mint-soft: #e5fbf3;
       --cream: #f6f3ea;
       --cream-2: #fffdf7;
       --paper: #ffffff;
@@ -18,8 +20,11 @@
       --muted: #5d7276;
       --soft: #91a1a4;
       --line: #dce7e4;
-      --shadow: 0 22px 62px rgba(16, 63, 71, .12);
-      --radius: 24px;
+      --line-strong: #c6d8d4;
+      --warning: #f5c76b;
+      --shadow: 0 28px 80px rgba(11, 48, 54, .14);
+      --shadow-soft: 0 14px 36px rgba(11, 48, 54, .09);
+      --radius: 26px;
       --max: 1180px;
       --sans: "Avenir Next", Avenir, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
@@ -29,7 +34,10 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: var(--cream);
+      background:
+        radial-gradient(circle at 6% 12%, rgba(85, 224, 181, .15), transparent 24rem),
+        radial-gradient(circle at 92% 34%, rgba(15, 88, 97, .10), transparent 30rem),
+        var(--cream);
       color: var(--ink);
       font-family: var(--sans);
       line-height: 1.55;
@@ -40,7 +48,8 @@
     button { font: inherit; }
     strong { color: var(--ink); }
 
-    .progress { position: fixed; inset: 0 auto auto 0; height: 3px; width: 0%; background: var(--mint); z-index: 1000; }
+    ::selection { background: var(--mint); color: var(--navy-3); }
+    .progress { position: fixed; inset: 0 auto auto 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--mint), var(--mint-2)); z-index: 1000; }
     .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 
     .nav {
@@ -48,14 +57,14 @@
       top: 0;
       z-index: 999;
       color: #fff;
-      background: rgba(16, 63, 71, .96);
+      background: rgba(8, 47, 54, .86);
       border-bottom: 1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(18px) saturate(1.2);
     }
     .nav-inner {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 15px 24px;
+      padding: 14px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -76,42 +85,49 @@
       cursor: pointer;
       font-size: 13px;
       font-weight: 760;
+      transition: .2s ease;
     }
-    .nav-links a:hover, .nav-links a.active, .nav-links button:hover { color: #fff; background: rgba(84,223,181,.13); border-color: rgba(84,223,181,.32); }
+    .nav-links a:hover, .nav-links a.active, .nav-links button:hover { color: #fff; background: rgba(85,224,181,.14); border-color: rgba(85,224,181,.34); transform: translateY(-1px); }
 
     .hero {
       position: relative;
       overflow: hidden;
-      background: var(--navy);
+      background:
+        radial-gradient(circle at 22% 20%, rgba(85,224,181,.13), transparent 30rem),
+        linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 72%, var(--navy-3) 100%);
       color: #fff;
-      padding: 76px 0 70px;
+      padding: 82px 0 76px;
       border-bottom: 1px solid rgba(255,255,255,.10);
     }
     .hero::before {
       content: "";
       position: absolute;
-      right: -270px;
-      top: -70px;
-      width: 780px;
-      height: 790px;
+      right: -320px;
+      top: -100px;
+      width: 850px;
+      height: 880px;
       background: linear-gradient(135deg, transparent 0 36%, rgba(255,255,255,.075) 36% 100%);
-      transform: skewX(-5deg);
+      transform: skewX(-6deg);
       pointer-events: none;
     }
     .hero::after {
       content: "→ → → → → → → →\A→ → → → → → → →\A→ → → → → → → →\A→ → → → → → → →";
       white-space: pre;
       position: absolute;
-      right: 88px;
-      top: 112px;
-      color: rgba(255,255,255,.065);
+      right: 84px;
+      top: 118px;
+      color: rgba(255,255,255,.07);
       font-size: 22px;
       font-weight: 900;
       line-height: 1.38;
       letter-spacing: 10px;
       pointer-events: none;
     }
-    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr) 390px; gap: 46px; align-items: stretch; }
+    .orb { position: absolute; width: 300px; height: 300px; border-radius: 50%; filter: blur(20px); opacity: .24; pointer-events: none; }
+    .orb.one { background: var(--mint); left: -80px; bottom: -130px; }
+    .orb.two { background: #ffffff; right: 20%; top: -180px; opacity: .10; }
+
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr) 405px; gap: 48px; align-items: stretch; }
     .eyebrow { display: block; margin-bottom: 14px; color: var(--mint); font-family: var(--mono); font-size: 11px; font-weight: 850; letter-spacing: .15em; text-transform: uppercase; }
     h1, h2, h3, h4 { margin: 0; }
     h1 { max-width: 850px; color: #fff; font-size: clamp(44px, 5.6vw, 70px); line-height: 1.04; letter-spacing: -.052em; font-weight: 580; }
@@ -120,24 +136,27 @@
     h3 { color: var(--ink); font-size: 20px; line-height: 1.22; letter-spacing: -.025em; font-weight: 850; }
     h4 { margin-bottom: 8px; color: var(--navy-2); font-family: var(--mono); font-size: 11px; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; }
     p { margin: 0; color: var(--muted); }
-    .hero .lead { max-width: 740px; margin-top: 22px; color: rgba(255,255,255,.86); font-size: 19px; line-height: 1.58; font-weight: 500; }
+    .hero .lead { max-width: 740px; margin-top: 22px; color: rgba(255,255,255,.88); font-size: 19px; line-height: 1.58; font-weight: 500; }
     .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-    .pill { display: inline-flex; align-items: center; border-radius: 999px; background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.16); color: #fff; padding: 8px 12px; font-size: 12px; font-weight: 850; }
+    .pill { display: inline-flex; align-items: center; border-radius: 999px; background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.16); color: #fff; padding: 8px 12px; font-size: 12px; font-weight: 850; box-shadow: inset 0 1px 0 rgba(255,255,255,.08); }
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 999px; border: 2px solid var(--mint); background: var(--mint); color: var(--navy-3); padding: 12px 20px; cursor: pointer; font-weight: 900; letter-spacing: .01em; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 999px; border: 2px solid var(--mint); background: var(--mint); color: var(--navy-3); padding: 12px 20px; cursor: pointer; font-weight: 900; letter-spacing: .01em; transition: .2s ease; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(85,224,181,.22); }
     .btn.secondary { background: transparent; color: #fff; border-color: rgba(255,255,255,.30); }
+    .btn.secondary:hover { background: rgba(255,255,255,.08); box-shadow: none; }
 
-    .hero-card { display: grid; gap: 18px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 28px; padding: 24px; backdrop-filter: blur(10px); box-shadow: 0 24px 64px rgba(0,0,0,.18); }
+    .hero-card { display: grid; gap: 18px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 30px; padding: 24px; backdrop-filter: blur(12px); box-shadow: 0 28px 70px rgba(0,0,0,.20); }
     .hero-card h3 { color: #fff; }
-    .hero-card p { color: rgba(255,255,255,.78); }
+    .hero-card p { color: rgba(255,255,255,.80); }
     .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    .stat { border-radius: 18px; border: 1px solid rgba(255,255,255,.13); background: rgba(255,255,255,.08); padding: 14px; }
+    .stat { border-radius: 18px; border: 1px solid rgba(255,255,255,.13); background: rgba(255,255,255,.08); padding: 14px; transition: .2s ease; }
+    .stat:hover { background: rgba(255,255,255,.12); transform: translateY(-2px); }
     .stat b { display: block; color: var(--mint); font-size: 30px; line-height: 1; letter-spacing: -.04em; }
     .stat span { display: block; margin-top: 6px; color: rgba(255,255,255,.78); font-size: 12px; line-height: 1.25; }
     .side-callout { padding-top: 17px; border-top: 1px solid rgba(255,255,255,.14); }
     .side-callout strong { display: block; margin-bottom: 8px; color: var(--mint); font-family: var(--mono); font-size: 11px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
 
-    section { padding: 66px 0; border-bottom: 1px solid var(--line); }
+    section { padding: 74px 0; border-bottom: 1px solid var(--line); position: relative; }
     .section-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 420px); gap: 32px; align-items: end; margin-bottom: 28px; }
     .section-head .lead { margin-top: 0; color: var(--muted); font-size: 17px; line-height: 1.58; }
     .grid { display: grid; gap: 18px; }
@@ -145,14 +164,16 @@
     .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
-    .card, .table-card, .account-card, .play-card, .contact-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .card, .table-card, .account-card, .play-card, .contact-card { background: rgba(255,255,255,.92); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
     .card, .play-card, .contact-card { padding: 24px; }
+    .card, .module, .step, .contact-card, .score-card, .field { transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease; }
+    .card:hover, .module:hover, .step:hover, .contact-card:hover, .score-card:hover, .field:hover { transform: translateY(-3px); box-shadow: 0 20px 52px rgba(11,48,54,.12); border-color: var(--line-strong); }
     .summary-card { border-left: 6px solid var(--mint); }
     .soft-card { background: var(--mint-soft); border-color: #c6efe3; }
     .soft-card h3, .soft-card p { color: var(--navy-2); }
-    .dark-card { background: var(--navy); border-color: var(--navy); }
+    .dark-card { background: linear-gradient(135deg, var(--navy), var(--navy-2)); border-color: var(--navy); }
     .dark-card h3 { color: #fff; }
-    .dark-card p, .dark-card li { color: rgba(255,255,255,.78); }
+    .dark-card p, .dark-card li { color: rgba(255,255,255,.80); }
     .dark-card h4 { color: var(--mint); }
 
     ul.clean { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
@@ -161,7 +182,7 @@
     .dark-card ul.clean li::before { color: var(--mint); }
 
     .score-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 20px; }
-    .score-card { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; padding: 22px; box-shadow: 0 10px 28px rgba(16, 63, 71, .08); }
+    .score-card { background: rgba(255,255,255,.92); border: 1px solid var(--line); border-radius: 22px; padding: 22px; box-shadow: var(--shadow-soft); }
     .score-card b { display: block; color: var(--navy); font-size: 28px; line-height: 1; margin-bottom: 8px; letter-spacing: -.04em; }
     .score-card span { color: var(--muted); font-size: 13px; }
 
@@ -170,44 +191,68 @@
     th, td { padding: 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; color: var(--muted); font-size: 14px; }
     th { background: #eef5ee; color: var(--navy-2); font-family: var(--mono); font-size: 11px; letter-spacing: .10em; text-transform: uppercase; }
     tr:last-child td { border-bottom: 0; }
+    tbody tr { transition: .18s ease; }
+    tbody tr:hover { background: #fbfffc; }
     td strong { color: var(--ink); }
     .priority { display: inline-flex; white-space: nowrap; border-radius: 999px; background: var(--mint-soft); color: var(--navy-2); padding: 6px 10px; font-size: 12px; font-weight: 900; }
 
     .module-map { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .module { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 22px; box-shadow: 0 10px 26px rgba(16, 63, 71, .07); }
+    .module { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 22px; box-shadow: var(--shadow-soft); }
     .module h3 { margin-bottom: 10px; }
 
-    .account-stack { display: grid; gap: 22px; }
+    .account-stack { display: grid; gap: 24px; }
     .account-card { overflow: hidden; }
-    .account-header { display: grid; grid-template-columns: auto 1fr auto; gap: 22px; align-items: center; padding: 23px; background: #fbfcf8; border-bottom: 1px solid var(--line); }
+    .account-header { display: grid; grid-template-columns: auto 1fr auto; gap: 22px; align-items: center; padding: 23px; background: linear-gradient(180deg, #fbfcf8, #ffffff); border-bottom: 1px solid var(--line); }
     .account-num { color: var(--navy); font-size: 42px; font-weight: 900; letter-spacing: -.06em; line-height: .9; }
     .account-header p { margin-top: 5px; }
     .account-body { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 23px; }
-    .field { border-radius: 18px; border: 1px solid var(--line); background: #fff; padding: 18px; }
+    .field { border-radius: 20px; border: 1px solid var(--line); background: #fff; padding: 18px; }
     .field.full { grid-column: 1 / -1; }
     .field p { color: var(--muted); }
     .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag { display: inline-flex; align-items: center; border-radius: 999px; background: #edf7f2; color: var(--navy-2); padding: 7px 10px; font-size: 12px; font-weight: 850; }
+    .tag { display: inline-flex; align-items: center; border-radius: 999px; background: #edf7f2; color: var(--navy-2); padding: 7px 10px; font-size: 12px; font-weight: 850; border: 1px solid #d8ebe4; }
     .field-list { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
     .field-list li { position: relative; padding-left: 20px; color: var(--muted); }
     .field-list li::before { content: "•"; position: absolute; left: 0; color: var(--navy); font-weight: 900; }
 
     .play-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
-    .step { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 18px; box-shadow: 0 10px 26px rgba(16, 63, 71, .07); }
+    .step { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 18px; box-shadow: var(--shadow-soft); }
     .step b { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 999px; background: var(--navy); color: #fff; margin-bottom: 12px; }
 
-    .quote-box { background: var(--navy); border-color: var(--navy); color: #fff; }
+    .quote-box { background: linear-gradient(135deg, var(--navy), var(--teal)); border-color: var(--navy); color: #fff; }
     .quote-box h3, .quote-box h4 { color: var(--mint); }
-    .quote-box p { color: rgba(255,255,255,.84); }
+    .quote-box p, .quote-box li { color: rgba(255,255,255,.86); }
 
     .contact-card a { color: var(--navy); font-weight: 850; }
     .contact-list { display: grid; gap: 10px; margin-top: 12px; }
     .contact-row { display: grid; grid-template-columns: 98px 1fr; gap: 10px; font-size: 14px; color: var(--muted); }
     .contact-row b { color: var(--ink); }
 
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px;
+      box-shadow: var(--shadow-soft);
+    }
+    .filter-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+    .filter-btn { border: 1px solid var(--line); background: #fff; color: var(--muted); border-radius: 999px; padding: 9px 12px; cursor: pointer; font-weight: 800; font-size: 12px; transition: .2s ease; }
+    .filter-btn.active, .filter-btn:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .search { border: 0; background: transparent; color: var(--ink); padding: 8px 12px; min-width: 220px; outline: none; font-weight: 700; }
+    .search::placeholder { color: var(--soft); }
+
     .footer { padding: 52px 0 68px; color: var(--muted); }
     .sources { columns: 2; column-gap: 32px; margin-top: 18px; padding-left: 18px; }
     .sources li { break-inside: avoid; margin-bottom: 10px; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 960px) {
       .nav-inner { align-items: flex-start; flex-direction: column; }
@@ -217,6 +262,8 @@
       .account-header { grid-template-columns: 1fr; }
       .stat-grid { grid-template-columns: 1fr; }
       .sources { columns: 1; }
+      .toolbar { border-radius: 24px; align-items: stretch; flex-direction: column; }
+      .search { width: 100%; }
       table, thead, tbody, th, td, tr { display: block; }
       thead { display: none; }
       tr { border-bottom: 1px solid var(--line); padding: 10px 0; }
@@ -226,13 +273,15 @@
     }
 
     @media print {
-      .nav, .progress, .cta-row { display: none !important; }
+      .nav, .progress, .cta-row, .toolbar { display: none !important; }
       body { background: #fff; color: #111; }
       .hero { background: #fff; color: #111; padding: 24px 0; }
+      .hero::before, .hero::after, .orb { display: none; }
       .hero h1, .hero-card h3 { color: #111; }
       .hero .lead, .hero-card p { color: #555; }
       section { padding: 28px 0; }
       .card, .hero-card, .table-card, .account-card, .field, .score-card, .module, .step, .contact-card { box-shadow: none; break-inside: avoid; }
+      .reveal { opacity: 1; transform: none; }
       * { color-adjust: exact; -webkit-print-color-adjust: exact; }
     }
   </style>
@@ -257,6 +306,7 @@
   </nav>
 
   <header class="hero" id="top">
+    <div class="orb one"></div><div class="orb two"></div>
     <div class="wrap hero-grid">
       <div>
         <span class="eyebrow">Renterra BDR Mock Exercise · Chris Khoury</span>
@@ -265,7 +315,7 @@
         <div class="meta">
           <span class="pill">4 high-fit accounts</span>
           <span class="pill">Hillview = primary target</span>
-          <span class="pill">Discovery-led</span>
+          <span class="pill">Discovery-led, action-oriented</span>
         </div>
         <div class="cta-row">
           <a class="btn" href="#accounts">View Accounts</a>
@@ -293,7 +343,7 @@
   </header>
 
   <main>
-    <section id="thesis">
+    <section id="thesis" class="reveal">
       <div class="wrap">
         <div class="section-head">
           <div>
@@ -311,7 +361,7 @@
       </div>
     </section>
 
-    <section id="summary">
+    <section id="summary" class="reveal">
       <div class="wrap">
         <div class="section-head">
           <div>
@@ -364,7 +414,7 @@
       </div>
     </section>
 
-    <section id="landscape">
+    <section id="landscape" class="reveal">
       <div class="wrap">
         <div class="section-head">
           <div>
@@ -386,7 +436,7 @@
       </div>
     </section>
 
-    <section id="accounts">
+    <section id="accounts" class="reveal">
       <div class="wrap">
         <div class="section-head">
           <div>
@@ -395,8 +445,17 @@
           </div>
           <p class="lead">Each account includes the sales hypothesis, potential pain, value map, discovery questions, opener, and contact information.</p>
         </div>
-        <div class="account-stack">
-          <article class="account-card">
+        <div class="toolbar">
+          <div class="filter-buttons" aria-label="Filter accounts">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="primary">Primary target</button>
+            <button class="filter-btn" data-filter="multi">Multi-location</button>
+            <button class="filter-btn" data-filter="smb">SMB</button>
+          </div>
+          <input class="search" id="accountSearch" placeholder="Search accounts, pain, contacts…" />
+        </div>
+        <div class="account-stack" id="accountStack">
+          <article class="account-card" data-tags="primary heavy transport service hillview david pat">
             <div class="account-header"><div class="account-num">01</div><div><span class="eyebrow">Primary mock-call target</span><h3>Hillview Equipment</h3><p>Heavy equipment rental + sales · Milford, MA · New England coverage</p></div><span class="priority">96 ICP score</span></div>
             <div class="account-body">
               <div class="field"><h4>Business snapshot</h4><p>Renting, selling, and shipping used construction machinery since 1990. Fleet includes excavators, wheel loaders, dozers, skid steers, long-reach packages, transport, parts, and service.</p></div>
@@ -410,7 +469,7 @@
             </div>
           </article>
 
-          <article class="account-card">
+          <article class="account-card" data-tags="multi strategic equipment east branch dealer leasing">
             <div class="account-header"><div class="account-num">02</div><div><span class="eyebrow">Strategic priority</span><h3>Equipment East</h3><p>DEVELON authorized dealer · Dracut, Brockton, Auburn MA + Bow NH</p></div><span class="priority">94 ICP score</span></div>
             <div class="account-body">
               <div class="field"><h4>Business snapshot</h4><p>Dealer/rental hybrid with multiple locations, rentals, leases, sales, parts, and service. Public estimates conflict, so scale should be treated as directional.</p></div>
@@ -424,7 +483,7 @@
             </div>
           </article>
 
-          <article class="account-card">
+          <article class="account-card" data-tags="smb rs rental independent richard somerset quote payment">
             <div class="account-header"><div class="account-num">03</div><div><span class="eyebrow">Very strong SMB ICP</span><h3>R.S. Rental &amp; Equipment</h3><p>Construction equipment rentals, sales, service & parts · Somerset, MA</p></div><span class="priority">91 ICP score</span></div>
             <div class="account-body">
               <div class="field"><h4>Business snapshot</h4><p>Independent construction rental business with a broad fleet and likely lean-team operating pressure.</p></div>
@@ -438,7 +497,7 @@
             </div>
           </article>
 
-          <article class="account-card">
+          <article class="account-card" data-tags="multi ats branch dispatch connolly quote service">
             <div class="account-header"><div class="account-num">04</div><div><span class="eyebrow">Strong multi-branch ICP</span><h3>ATS Equipment</h3><p>Construction equipment rental + sales · Boston, Auburn, Rehoboth MA + Candia NH</p></div><span class="priority">90 ICP score</span></div>
             <div class="account-body">
               <div class="field"><h4>Business snapshot</h4><p>Independent multi-branch construction rental and sales operation with broad fleet categories, service, and parts.</p></div>
@@ -455,7 +514,7 @@
       </div>
     </section>
 
-    <section id="contacts">
+    <section id="contacts" class="reveal">
       <div class="wrap">
         <div class="section-head">
           <div><span class="eyebrow">Contact directory</span><h2>Quick contact view.</h2></div>
@@ -470,7 +529,7 @@
       </div>
     </section>
 
-    <section id="playbook">
+    <section id="playbook" class="reveal">
       <div class="wrap">
         <div class="section-head">
           <div><span class="eyebrow">Cold-call framework</span><h2>Five simple moves to earn the next call.</h2></div>
@@ -490,7 +549,7 @@
       </div>
     </section>
 
-    <section id="objections">
+    <section id="objections" class="reveal">
       <div class="wrap">
         <div class="section-head">
           <div><span class="eyebrow">Pain mapping & objections</span><h2>Keep the conversation practical.</h2></div>
@@ -512,7 +571,7 @@
       </div>
     </section>
 
-    <section id="gameday">
+    <section id="gameday" class="reveal">
       <div class="wrap">
         <div class="section-head">
           <div><span class="eyebrow">Game-day execution</span><h2>Hillview mock-call run-of-show.</h2></div>
@@ -534,4 +593,65 @@
       <h2 style="font-size:34px">Clear, honest, and useful.</h2>
       <p style="margin-top:14px">Public employee and revenue estimates should be treated as directional. If sources disagree, preserve that uncertainty instead of overstating precision. The point is to show strong account selection and call preparation; discovery validates the thesis.</p>
       <ul class="sources">
-        <li>Renterra platform notes: inventory, quotes, payments, dispatch, maintenance, inspections, storefront, and customer porta
+        <li>Renterra platform notes: inventory, quotes, payments, dispatch, maintenance, inspections, storefront, and customer portal.</li>
+        <li>Hillview Equipment: company website, rental/services/contact information, and public professional profiles.</li>
+        <li>Equipment East: company website, rental/location information, BBB profile, and industry articles.</li>
+        <li>R.S. Rental &amp; Equipment: company website, BBB profile, directory contact information, and public estimates labeled directional.</li>
+        <li>ATS Equipment: company website, BBB profile, directory estimates labeled directional, and public ownership/history references.</li>
+        <li>Competitive landscape: equipment rental software roundups and vendor positioning notes.</li>
+      </ul>
+      <p style="font-family:var(--mono); color:var(--navy); text-transform:uppercase; letter-spacing:.12em; font-size:12px; margin-top:24px">Prepared for Renterra · Chris Khoury · BDR Mock Exercise</p>
+    </div>
+  </footer>
+
+  <script>
+    const progress = document.getElementById('progress');
+    const navLinks = Array.from(document.querySelectorAll('#navLinks a'));
+    const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const revealEls = Array.from(document.querySelectorAll('.reveal'));
+
+    function updateUI() {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      progress.style.width = height ? `${(scrollTop / height) * 100}%` : '0%';
+      let current = sections[0];
+      for (const section of sections) {
+        if (section.offsetTop - 130 <= scrollTop) current = section;
+      }
+      navLinks.forEach(a => a.classList.toggle('active', current && a.getAttribute('href') === `#${current.id}`));
+    }
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('in');
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+
+    const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
+    const search = document.getElementById('accountSearch');
+    const cards = Array.from(document.querySelectorAll('#accountStack .account-card'));
+    let activeFilter = 'all';
+
+    function filterAccounts() {
+      const query = (search?.value || '').toLowerCase().trim();
+      cards.forEach(card => {
+        const tags = card.dataset.tags || '';
+        const text = card.innerText.toLowerCase();
+        const filterMatch = activeFilter === 'all' || tags.includes(activeFilter);
+        const queryMatch = !query || text.includes(query) || tags.includes(query);
+        card.style.display = filterMatch && queryMatch ? '' : 'none';
+      });
+    }
+    filterButtons.forEach(btn => btn.addEventListener('click', () => {
+      activeFilter = btn.dataset.filter;
+      filterButtons.forEach(b => b.classList.toggle('active', b === btn));
+      filterAccounts();
+    }));
+    search?.addEventListener('input', filterAccounts);
+
+    document.addEventListener('scroll', updateUI, { passive: true });
+    updateUI();
+  </script>
+</body>
+</html>
