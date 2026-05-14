@@ -5,216 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Renterra | ICP Research & Call Playbook</title>
   <style>
-    :root {
-      --bg: #060a08;
-      --bg-2: #0b1511;
-      --card: rgba(18, 34, 27, 0.66);
-      --card-strong: rgba(12, 22, 18, 0.9);
-      --line: rgba(145, 255, 195, 0.22);
-      --text: #dcffe9;
-      --muted: #9ec9b0;
-      --brand: #6effa7;
-      --brand-2: #15ff7b;
-      --danger: #ff5f74;
-      --shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background: radial-gradient(circle at 20% 0%, #153427 0%, var(--bg) 45%), var(--bg);
-      color: var(--text);
-      line-height: 1.55;
-    }
-    .progress {
-      position: fixed; top: 0; left: 0; height: 4px; width: 0; z-index: 100;
-      background: linear-gradient(90deg, var(--brand), var(--brand-2));
-      box-shadow: 0 0 20px rgba(110, 255, 167, 0.8);
-    }
-    nav {
-      position: sticky; top: 0; z-index: 90;
-      backdrop-filter: blur(16px);
-      background: rgba(4, 8, 6, 0.72);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-wrap {
-      max-width: 1160px; margin: 0 auto; padding: 0.8rem 1rem;
-      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-    }
-    .brand { font-weight: 700; letter-spacing: 0.06em; }
-    .menu { display: flex; gap: .3rem; flex-wrap: wrap; }
-    .menu a {
-      color: var(--muted); text-decoration: none; padding: .45rem .7rem; border-radius: 999px;
-      transition: .25s ease;
-    }
-    .menu a.active, .menu a:hover { color: var(--text); background: rgba(110,255,167,.12); }
-    .nav-btn { border: 1px solid var(--line); background: transparent; color: var(--text); padding:.5rem .75rem; border-radius: .7rem; cursor:pointer; }
-    main { max-width: 1160px; margin: 0 auto; padding: 1rem; }
-    section { padding: 4.5rem 0; scroll-margin-top: 5rem; }
-    .hero {
-      min-height: 75vh; display:grid; align-content:center; gap: 1.4rem;
-      background: linear-gradient(140deg, rgba(22,255,126,.22), rgba(12,23,18,.25));
-      border: 1px solid var(--line); border-radius: 1.3rem; padding: clamp(1.4rem, 4vw, 3rem);
-      box-shadow: var(--shadow);
-    }
-    h1 {
-      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
-      font-size: clamp(2.3rem, 7vw, 5.2rem);
-      line-height: .96; margin: 0;
-    }
-    h2 { font-size: clamp(1.6rem, 4.5vw, 2.5rem); margin: 0 0 1rem; }
-    p { margin: 0; color: var(--muted); }
-    .lead { font-size: 1.13rem; max-width: 65ch; }
-    .cta { display:flex; gap: .8rem; flex-wrap: wrap; }
-    .btn {
-      display:inline-flex; align-items:center; justify-content:center; gap:.5rem; text-decoration:none; font-weight:600;
-      padding:.82rem 1.1rem; border-radius:.8rem; border:1px solid var(--line); color: var(--text);
-      transition: .25s ease; cursor: pointer;
-    }
-    .btn.primary { background: linear-gradient(120deg, var(--brand), var(--brand-2)); color:#082213; border: none; }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(110,255,167,.2); }
-    .stats { display:grid; grid-template-columns: repeat(3, minmax(150px,1fr)); gap:.8rem; }
-    .card, details {
-      background: var(--card); border:1px solid var(--line); border-radius: 1rem; padding: 1rem; backdrop-filter: blur(14px);
-    }
-    .stat b { font-size:1.6rem; display:block; color: var(--brand); }
-    .thesis { font-size: clamp(1.2rem, 3vw, 2rem); color: #e9fff2; max-width: 42ch; }
-    .accounts { display:grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap:1rem; }
-    .account.featured { border-color: rgba(110,255,167,.65); box-shadow: 0 0 0 1px rgba(110,255,167,.4), var(--shadow); }
-    .account-head { display:flex; justify-content:space-between; gap:.5rem; align-items:center; margin-bottom:.6rem; }
-    .badge { border:1px solid var(--line); color:#b7ffd2; border-radius:999px; padding:.2rem .6rem; font-size:.8rem; }
-    details { padding:0; overflow: hidden; }
-    details summary { list-style:none; cursor:pointer; padding: 1rem; font-weight:600; }
-    details summary::-webkit-details-marker { display:none; }
-    details .content { padding: 0 1rem 1rem; color:var(--muted); }
-    .grid-2 { display:grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap:1rem; }
-    table { width:100%; border-collapse: collapse; }
-    th, td { padding:.8rem; border:1px solid var(--line); text-align:left; }
-    th { background: rgba(12, 29, 20, 0.8); }
-    .timeline { display:grid; gap:.8rem; }
-    .step { display:flex; gap:.8rem; align-items:flex-start; }
-    .num { min-width:2rem; height:2rem; border-radius:50%; background: rgba(110,255,167,.18); display:grid; place-items:center; font-weight:700; }
-    .quote { border-left: 4px solid var(--brand); padding: 1rem; background: var(--card-strong); border-radius:.7rem; }
-    .checklist li { margin-bottom: .45rem; }
-    footer { border-top:1px solid var(--line); padding: 2rem 0 3rem; color: #86b49a; }
-    @media (max-width: 900px){ .accounts,.grid-2,.stats{ grid-template-columns:1fr; } .menu{ display:none;} .menu.open{display:flex;flex-direction:column;} }
+    :root{--bg:#040806;--bg2:#0b1712;--card:rgba(17,33,26,.64);--stroke:rgba(130,255,189,.25);--txt:#e7fff1;--muted:#9fc9b2;--a:#5dff9d;--a2:#16ff7f;--warn:#ffd166}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--txt);background:radial-gradient(circle at 20% -10%,#1f4635 0,#040806 40%),var(--bg)}
+    .progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:100;background:linear-gradient(90deg,var(--a),var(--a2));box-shadow:0 0 20px rgba(93,255,157,.9)}
+    nav{position:sticky;top:0;z-index:90;background:rgba(2,6,4,.7);backdrop-filter:blur(12px);border-bottom:1px solid var(--stroke)}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 1rem}.navin{display:flex;gap:.7rem;align-items:center;justify-content:space-between;padding:.7rem 0}.brand{font-weight:700;letter-spacing:.08em;font-size:.82rem}
+    .menu{display:flex;flex-wrap:wrap;gap:.25rem}.menu a{padding:.45rem .7rem;text-decoration:none;color:var(--muted);border-radius:999px}.menu a:hover,.menu a.active{background:rgba(93,255,157,.15);color:var(--txt)}
+    .nbtn,.btn{border:1px solid var(--stroke);background:transparent;color:var(--txt);padding:.55rem .85rem;border-radius:.7rem;cursor:pointer}.btn{display:inline-flex;text-decoration:none;font-weight:600}.btn.primary{background:linear-gradient(120deg,var(--a),var(--a2));color:#032212;border:none}
+    main{max-width:1180px;margin:0 auto;padding:1rem}section{padding:4.3rem 0;scroll-margin-top:5.2rem}.card{background:var(--card);border:1px solid var(--stroke);border-radius:1rem;padding:1rem;backdrop-filter:blur(12px)}
+    .hero{min-height:78vh;padding:clamp(1.1rem,4vw,2.8rem);display:grid;gap:1rem;align-content:center;background:linear-gradient(145deg,rgba(93,255,157,.2),rgba(14,24,20,.2));box-shadow:0 20px 50px rgba(0,0,0,.5)}
+    h1{font-size:clamp(2rem,6vw,5rem);line-height:.95;margin:0}h2{font-size:clamp(1.4rem,4vw,2.3rem);margin:0 0 .8rem}h3{margin:.2rem 0 .6rem}p{margin:0;color:var(--muted)}
+    .lead{font-size:1.1rem;max-width:65ch}.stats,.grid4,.grid2{display:grid;gap:.8rem}.stats{grid-template-columns:repeat(3,minmax(120px,1fr))}.grid4{grid-template-columns:repeat(4,minmax(0,1fr))}.grid2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .metric b{font-size:1.5rem;color:var(--a);display:block}.tag{display:inline-block;border:1px solid var(--stroke);padding:.2rem .65rem;border-radius:999px;font-size:.8rem;color:#b5ffd1}
+    details{background:var(--card);border:1px solid var(--stroke);border-radius:1rem;overflow:hidden}summary{cursor:pointer;list-style:none;padding:1rem;font-weight:600}summary::-webkit-details-marker{display:none}.content{padding:0 1rem 1rem;color:var(--muted)}
+    .account.feature{border-color:rgba(93,255,157,.75);box-shadow:0 0 0 1px rgba(93,255,157,.4)} .row{display:flex;justify-content:space-between;gap:.6rem;align-items:center}
+    table{width:100%;border-collapse:collapse}th,td{border:1px solid var(--stroke);padding:.72rem;text-align:left}th{background:rgba(12,30,22,.9)}
+    .timeline .step{display:flex;gap:.8rem;margin-bottom:.8rem}.bubble{width:2rem;height:2rem;border-radius:50%;display:grid;place-items:center;background:rgba(93,255,157,.18);font-weight:700}
+    ul{margin:.2rem 0 .4rem;padding-left:1.1rem}li{margin:.35rem 0}.warn{color:var(--warn)} footer{padding:2rem 0 3rem;border-top:1px solid var(--stroke)}
+    @media(max-width:920px){.menu{display:none}.menu.open{display:flex;flex-direction:column}.grid4,.grid2,.stats{grid-template-columns:1fr}}
+    @media print{nav,.progress,.cta,.nbtn{display:none}body{background:#fff;color:#111}p{color:#333}.card,details{background:#fff;border-color:#bbb}}
   </style>
 </head>
 <body>
-  <div class="progress" id="progress"></div>
-  <nav>
-    <div class="nav-wrap">
-      <div class="brand">RENТERRA · BDR STRATEGY</div>
-      <button class="nav-btn" id="mobileNav">Menu</button>
-      <div class="menu" id="menu">
-        <a href="#hero">Overview</a><a href="#thesis">Thesis</a><a href="#accounts">Accounts</a><a href="#landscape">Landscape</a><a href="#playbook">Playbook</a><a href="#objections">Objections</a><a href="#gameday">Game Day</a>
-      </div>
-      <button class="nav-btn" onclick="window.print()">Print / Save PDF</button>
-    </div>
-  </nav>
-  <main>
-    <section id="hero" class="hero">
-      <p class="badge">Chris Khoury</p>
-      <h1>ICP Research &amp; Call Playbook</h1>
-      <p class="lead">A BDR-ready account strategy for Renterra, designed for fast qualification, smart discovery, and confident next-step control.</p>
-      <div class="stats">
-        <div class="card stat"><b>4</b>target accounts</div>
-        <div class="card stat"><b>90+</b>ICP scores</div>
-        <div class="card stat"><b>1</b>mock-call target</div>
-      </div>
-      <div class="cta"><a class="btn primary" href="#accounts">View Accounts</a><a class="btn" href="#playbook">Call Playbook</a></div>
-    </section>
-
-    <section id="thesis">
-      <h2>Research thesis</h2>
-      <div class="card"><p class="thesis">Renterra wins where the bottleneck is execution: fast quotes, clean inventory status, dispatch coordination, service readiness, inspection records, payments, and follow-up discipline.</p></div>
-    </section>
-
-    <section id="accounts">
-      <h2>Target accounts</h2>
-      <div class="accounts">
-        <div class="card account featured"><div class="account-head"><strong>Hillview Equipment</strong><span class="badge">96/100 · Highest priority</span></div><p>Primary mock-call target with strong rental operational complexity.</p><details><summary>Open strategy details</summary><div class="content"><p><strong>Business snapshot:</strong> Multi-line equipment rental operations with dispatch and turn pressure.</p><p><strong>Likely pain:</strong> Delays between quote, availability checks, and ready-to-rent status.</p><p><strong>Renterra value map:</strong> Unified quote-to-contract flow + inspection/service visibility + payment follow-through.</p><p><strong>Discovery questions:</strong> Where do deals stall most often? How is branch inventory truth maintained? Who owns missed follow-up?</p><p><strong>Opening wedge:</strong> “If I could help your team shorten quote-to-confirm without adding headcount, worth a quick compare?”</p></div></details></div>
-        <div class="card account"><div class="account-head"><strong>Equipment East</strong><span class="badge">94/100 · Strategic priority</span></div><p>Regional footprint with branch coordination challenges.</p><details><summary>Open strategy details</summary><div class="content"><p><strong>Business snapshot:</strong> High transaction velocity across locations.</p><p><strong>Likely pain:</strong> Fragmented updates between sales, dispatch, and service.</p><p><strong>Renterra value map:</strong> Shared operating system for quoting, dispatch, and billing handoffs.</p><p><strong>Discovery questions:</strong> How often do promised delivery times slip? Where is status currently tracked?</p><p><strong>Opening wedge:</strong> “Can I share what similar teams changed to stop order-status blind spots?”</p></div></details></div>
-        <div class="card account"><div class="account-head"><strong>R.S. Rental &amp; Equipment</strong><span class="badge">91/100 · Very strong SMB ICP</span></div><p>SMB operator with strong upside from process standardization.</p><details><summary>Open strategy details</summary><div class="content"><p><strong>Business snapshot:</strong> Lean team balancing customer response speed and fleet uptime.</p><p><strong>Likely pain:</strong> Team context trapped in texts/calls/spreadsheets.</p><p><strong>Renterra value map:</strong> Faster cycle times through centralized workflow and accountability.</p><p><strong>Discovery questions:</strong> What happens when key operator is out? How are inspection exceptions escalated?</p><p><strong>Opening wedge:</strong> “Could we compare your current process to a lightweight playbook built for lean teams?”</p></div></details></div>
-        <div class="card account"><div class="account-head"><strong>ATS Equipment</strong><span class="badge">90/100 · Strong multi-branch ICP</span></div><p>Complex branch rhythm suggests high ROI from workflow consolidation.</p><details><summary>Open strategy details</summary><div class="content"><p><strong>Business snapshot:</strong> Multi-branch operations with competing local priorities.</p><p><strong>Likely pain:</strong> Inconsistent quote discipline and uneven follow-up.</p><p><strong>Renterra value map:</strong> One source of truth for quote, readiness, dispatch, and collection.</p><p><strong>Discovery questions:</strong> Which branch runs best and why? Where are write-offs or delays introduced?</p><p><strong>Opening wedge:</strong> “Would it be useful to benchmark branch-to-branch execution consistency?”</p></div></details></div>
-      </div>
-    </section>
-
-    <section id="landscape">
-      <h2>Competitive landscape</h2>
-      <div class="card"><table><thead><tr><th>Option</th><th>Typical Constraint</th><th>Renterra Angle</th></tr></thead><tbody>
-        <tr><td>Spreadsheets / paper / QuickBooks</td><td>Manual handoffs, stale status, no closed-loop workflow</td><td>Connected execution layer from quote through follow-up</td></tr>
-        <tr><td>Point of Rental Essentials</td><td>Can become process-heavy for fast-moving teams</td><td>Speed-to-action UX and cleaner daily execution rhythm</td></tr>
-        <tr><td>Texada / InTempo</td><td>Broad platform depth; onboarding/change can feel heavyweight</td><td>Focused adoption path around critical sales-to-ops bottlenecks</td></tr>
-        <tr><td>Wynne RentalMan</td><td>Enterprise power with complexity and admin burden</td><td>Operational simplicity without sacrificing visibility</td></tr>
-        <tr><td>Quipli / EZRentOut</td><td>Useful for lighter needs; may cap out with scale complexity</td><td>Built for growth-stage discipline and multi-role orchestration</td></tr>
-      </tbody></table></div>
-    </section>
-
-    <section id="playbook">
-      <h2>Call playbook</h2>
-      <div class="timeline card">
-        <div class="step"><div class="num">1</div><div><strong>Opener</strong><p>Permission + pattern interrupt to earn 20 focused seconds.</p></div></div>
-        <div class="step"><div class="num">2</div><div><strong>Observation</strong><p>Use specific account research to prove relevance quickly.</p></div></div>
-        <div class="step"><div class="num">3</div><div><strong>Problem question</strong><p>Ask one sharp diagnostic question, then pause.</p></div></div>
-        <div class="step"><div class="num">4</div><div><strong>Value bridge</strong><p>Map confirmed pain to execution outcomes Renterra drives.</p></div></div>
-        <div class="step"><div class="num">5</div><div><strong>Close</strong><p>Ask for 20 minutes to evaluate fit, not a purchase decision.</p></div></div>
-      </div>
-      <div class="grid-2" style="margin-top:1rem;">
-        <div class="quote">“Quick one — did I catch you with 30 seconds? I’m calling because teams like yours often lose margin in quote-to-ready handoffs, and I have one idea worth pressure-testing.”</div>
-        <div class="quote">“If what you shared is accurate, a 20-minute working session with your ops/sales lead could confirm if this is real or not. Open to next Tuesday or Wednesday?”</div>
-      </div>
-    </section>
-
-    <section id="objections">
-      <h2>Pain mapping &amp; objections</h2>
-      <div class="card"><table><thead><tr><th>Pain signal</th><th>Anchor question</th><th>Proof point direction</th></tr></thead><tbody><tr><td>Slow quote response</td><td>Where does quote approval stall?</td><td>Cycle-time compression</td></tr><tr><td>Status confusion</td><td>Who owns source of truth daily?</td><td>Single workflow visibility</td></tr><tr><td>Collections leakage</td><td>How are past-due accounts chased?</td><td>Follow-up discipline automation</td></tr></tbody></table></div>
-      <div class="grid-2" style="margin-top:1rem;">
-        <details><summary>We’re all set / not interested.</summary><div class="content">“Totally fair. Usually that means priorities are full, not that execution is perfect. Worth a 20-minute gap check?”</div></details>
-        <details><summary>We already use Point of Rental / Texada.</summary><div class="content">“Makes sense. This is often about workflow friction around the platform, not replacing tools tomorrow.”</div></details>
-        <details><summary>Just send me an email.</summary><div class="content">“Happy to — what should I tailor it to: quote speed, dispatch coordination, or collections follow-up?”</div></details>
-        <details><summary>We’re too small for software.</summary><div class="content">“Understood. Lean teams are usually hit hardest by dropped handoffs — that’s exactly where lightweight process wins.”</div></details>
-        <details><summary>How much does it cost?</summary><div class="content">“Great question. It depends on workflow scope; first we confirm if value potential is real so pricing has context.”</div></details>
-        <details><summary>I’m too busy right now.</summary><div class="content">“Understood. I can earn 20 minutes later if I send two sharp observations tied to your operation first?”</div></details>
-      </div>
-    </section>
-
-    <section id="gameday">
-      <h2>Game-day execution plan</h2>
-      <div class="grid-2">
-        <div class="card"><h3>Hillview mock-call run-of-show</h3><ul class="checklist"><li>Cold open with permission + relevance anchor.</li><li>Confirm one bottleneck with targeted question.</li><li>Bridge to Renterra workflow outcomes.</li><li>Secure 20-minute discovery with right stakeholders.</li></ul></div>
-        <div class="card"><h3>Operator checklist</h3><ul class="checklist"><li><strong>Listen for:</strong> manual steps, branch disconnects, follow-up gaps.</li><li><strong>Do:</strong> mirror language, quantify impact, confirm next step owner.</li><li><strong>Don’t:</strong> over-demo, feature dump, negotiate price too early.</li><li><strong>AE handoff:</strong> summarize pain, urgency, economic stake, buying team.</li><li><strong>Success criteria:</strong> meeting booked with contextual agenda.</li></ul></div>
-      </div>
-    </section>
-
-    <footer>
-      <p>Sources &amp; notes: account observations are based on public signals and directional estimates; not all details are independently verified.</p>
-    </footer>
-  </main>
-  <script>
-    const sections = [...document.querySelectorAll('main section')];
-    const links = [...document.querySelectorAll('.menu a')];
-    const progress = document.getElementById('progress');
-    const mobileNavBtn = document.getElementById('mobileNav');
-    const menu = document.getElementById('menu');
-
-    mobileNavBtn.addEventListener('click', () => menu.classList.toggle('open'));
-
-    const updateActive = () => {
-      const pos = window.scrollY + 140;
-      sections.forEach(sec => {
-        if (pos >= sec.offsetTop && pos < sec.offsetTop + sec.offsetHeight) {
-          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + sec.id));
-        }
-      });
-      const h = document.documentElement;
-      const scrolled = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-      progress.style.width = scrolled + '%';
-    };
-    updateActive();
-    window.addEventListener('scroll', updateActive);
-    links.forEach(l => l.addEventListener('click', () => menu.classList.remove('open')));
-  </script>
+<div class="progress" id="progress"></div>
+<nav><div class="wrap navin"><div class="brand">RENТERRA · ICP COMMAND CENTER</div><button class="nbtn" id="mob">Menu</button><div class="menu" id="menu"><a href="#hero">Overview</a><a href="#thesis">Thesis</a><a href="#summary">Summary</a><a href="#competition">Landscape</a><a href="#accounts">Accounts</a><a href="#calls">Call Framework</a><a href="#objections">Objections</a><a href="#gameday">Game Day</a><a href="#sources">Sources</a></div><button class="nbtn" onclick="window.print()">Print Brief</button></div></nav>
+<main>
+<section id="hero" class="hero card"><span class="tag">Author: Chris Khoury</span><h1>ICP Research &amp; Call Playbook</h1><p class="lead">A BDR-ready account strategy for Renterra. Built as a fintech-style strategic microsite to convert public account intelligence into high-confidence first conversations.</p><div class="stats"><div class="card metric"><b>4</b>high-fit accounts</div><div class="card metric"><b>90+</b>ICP score each</div><div class="card metric"><b>1</b>primary mock-call target</div></div><div class="cta"><a class="btn" href="#accounts">View Accounts</a> <a class="btn" href="#calls">Call Playbook</a> <button class="btn" onclick="window.print()">Print Brief</button></div><div class="grid2"><div class="card"><h3>Research thesis</h3><p>Renterra wins where the bottleneck is not demand — it is execution.</p></div><div class="card"><h3>Mock-call target</h3><p><strong>Hillview Equipment</strong> selected for highest fit and clearest execution-friction hypothesis.</p></div></div></section>
+<section id="thesis"><h2>Strategic thesis</h2><p class="lead">In rental operations, margin leaks between quote, readiness, dispatch, return condition, and collection. Teams usually do not lose because phones are quiet; they lose because handoffs are fragmented.</p><div class="grid4"><div class="card"><h3>Fast quotes</h3><p>Slow response kills win rate.</p></div><div class="card"><h3>Inventory status</h3><p>“Available” is meaningless if condition is unknown.</p></div><div class="card"><h3>Dispatch coordination</h3><p>Scheduling slips create customer distrust.</p></div><div class="card"><h3>Service readiness</h3><p>Maintenance visibility governs true utilization.</p></div><div class="card"><h3>Inspection records</h3><p>Photos/video tied to contract reduce disputes.</p></div><div class="card"><h3>Payments</h3><p>Aging management is operations, not just accounting.</p></div><div class="card"><h3>Follow-up discipline</h3><p>Unanswered quotes are silent churn.</p></div></div></section>
+<section id="summary"><h2>Executive summary</h2><div class="grid2"><div class="card"><h3>Methodology</h3><ul><li>Account selection from public evidence of rental + service operations.</li><li>Scoring on branch complexity, dispatch load, quote velocity, and execution-risk surface.</li><li>Mapped likely pain to Renterra front office, operations, and money modules.</li></ul></div><div class="card"><h3>Core ICP signals</h3><ul><li>Active rentals plus service/parts motion.</li><li>Multiple locations or high throughput from single hub.</li><li>Need for speed, consistency, and recoverable documentation.</li><li>Evidence of process sprawl across calls, texts, and manual logs.</li></ul></div></div><div class="card" style="margin-top:.8rem"><h3>Prioritized account scorecard</h3><table><tr><th>Account</th><th>Score</th><th>Priority</th><th>Why actionable now</th></tr><tr><td>Hillview Equipment</td><td>96</td><td>Highest</td><td>Strong rental footprint + high execution complexity.</td></tr><tr><td>Equipment East</td><td>94</td><td>Strategic</td><td>Sales-rental-service model suggests cross-functional handoff strain.</td></tr><tr><td>R.S. Rental &amp; Equipment</td><td>91</td><td>Very strong SMB</td><td>SMB speed requirements with likely process concentration risk.</td></tr><tr><td>ATS Equipment</td><td>90</td><td>Strong multi-branch</td><td>Public four-location signal implies coordination upside.</td></tr></table></div></section>
+<section id="competition"><h2>Competitive landscape + Renterra module map</h2><div class="card"><table><tr><th>Current state</th><th>Likely profile</th><th>Friction</th><th>Renterra angle</th></tr><tr><td>Spreadsheets / paper / QuickBooks</td><td>Growing operator with fragmented stack</td><td>Stale availability, missed follow-up, billing lag</td><td>Single execution system from quote to payment</td></tr><tr><td>Point of Rental Essentials</td><td>SMB on cloud RMS baseline</td><td>May still rely on side workflows for execution discipline</td><td>Modern daily workflow orchestration and tighter user rhythm</td></tr><tr><td>Texada / InTempo</td><td>Broader platform with heavier process gravity</td><td>Change fatigue, slower frontline adoption</td><td>Focused implementation around high-leverage bottlenecks</td></tr><tr><td>Wynne RentalMan</td><td>Enterprise-grade depth</td><td>Operational overhead and complexity for lean teams</td><td>Faster time-to-value, mobile-first field adoption</td></tr><tr><td>Quipli / EZRentOut</td><td>Lighter workflow footprint</td><td>Can cap out as branch/process complexity rises</td><td>Deeper rental-ops control loop for scaling businesses</td></tr></table></div><div class="grid3"></div><div class="grid2" style="margin-top:.8rem"><div class="card"><h3>Front Office</h3><ul><li>Branded quotes via text &amp; email</li><li>Automated quote follow-up</li><li>Branded online storefront</li><li>Customer portal</li></ul></div><div class="card"><h3>Operations</h3><ul><li>Real-time inventory &amp; availability</li><li>Drag-and-drop dispatch board</li><li>Mobile inspection photos &amp; videos</li><li>Maintenance &amp; service logs</li></ul></div><div class="card"><h3>Money</h3><ul><li>Automated invoicing</li><li>Aging balances &amp; payment processing</li><li>Utilization and revenue-per-asset reporting</li><li>Pricing/utilization insights</li></ul></div></div></section>
+<section id="accounts"><h2>Target accounts</h2><div class="grid2"><details open class="account feature"><summary><div class="row"><span>Hillview Equipment</span><span class="tag">96/100 · Highest priority</span></div></summary><div class="content"><p><strong>Business snapshot:</strong> Public listings and industry directories indicate active equipment rental operations in New England (directional).</p><p><strong>Strategic sales hypothesis:</strong> Quote speed and asset-readiness synchronization are core levers for margin and repeat business.</p><p><strong>BDR point of view:</strong> Lead with execution consistency, not software replacement rhetoric.</p><p><strong>Likely pain:</strong> Manual relay between sales promises, dispatch reality, and condition proof at return.</p><p><strong>Renterra value map:</strong> Branded quote motion + dispatch board + inspection evidence + invoicing closure.</p><p><strong>Discovery questions:</strong> Where does quote-to-confirm break most often? Who owns final readiness before delivery? How are damage disputes documented today?</p><p><strong>Opening wedge:</strong> “I noticed Hillview positions rentals as a core service. Quick question: when demand spikes, what breaks first—quote speed, dispatch timing, or return documentation?”</p><p><strong>Why call:</strong> Highest surface area for measurable win-rate, utilization, and DSO improvements.</p></div></details>
+<details class="account"><summary><div class="row"><span>Equipment East</span><span class="tag">94/100 · Strategic priority</span></div></summary><div class="content"><p><strong>Business snapshot:</strong> Company describes sales, rentals, parts, and service model; announced product line expansion in 2024.</p><p><strong>Hypothesis:</strong> Expanded product mix increases quote complexity and branch coordination load.</p><p><strong>Likely pain:</strong> Fragmented updates across rental desk, shop, and field delivery.</p><p><strong>Discovery:</strong> How do teams prevent double-committing high-demand assets? Where does ETA confidence degrade?</p><p><strong>Opening wedge:</strong> “You’ve expanded product lines; usually that improves demand but stresses internal handoffs. Is that showing up in your rental flow?”</p></div></details>
+<details class="account"><summary><div class="row"><span>R.S. Rental &amp; Equipment</span><span class="tag">91/100 · Very strong SMB ICP</span></div></summary><div class="content"><p><strong>Business snapshot:</strong> Public pages indicate active equipment sales/rental/service coverage from a Massachusetts base.</p><p><strong>Hypothesis:</strong> Lean teams face key-person dependency and follow-up leakage.</p><p><strong>Likely pain:</strong> Demand handled by heroics instead of repeatable workflow.</p><p><strong>Discovery:</strong> What happens when the primary coordinator is out? How are open quotes resurfaced every day?</p><p><strong>Opening wedge:</strong> “For smaller teams, one dropped handoff can erase the day’s margin. How are you currently protecting against that?”</p></div></details>
+<details class="account"><summary><div class="row"><span>ATS Equipment</span><span class="tag">90/100 · Strong multi-branch ICP</span></div></summary><div class="content"><p><strong>Business snapshot:</strong> ATS public materials indicate rental/sales/service and four locations (catalog source, directional).</p><p><strong>Hypothesis:</strong> Branch-level execution variance creates hidden utilization and collection drag.</p><p><strong>Likely pain:</strong> Inconsistent quote follow-up and status visibility between locations.</p><p><strong>Discovery:</strong> Which branch sets the standard today? How quickly can leadership see idle-versus-earning equipment?</p><p><strong>Opening wedge:</strong> “With multiple locations, the challenge is usually consistency. Are you happy with branch-to-branch execution parity?”</p></div></details></div></section>
+<section id="calls"><h2>Cold-call framework</h2><div class="card timeline"><div class="step"><div class="bubble">1</div><div><strong>Opener</strong><p>Permission + pattern interrupt.</p></div></div><div class="step"><div class="bubble">2</div><div><strong>Observation</strong><p>Specific public signal to prove relevance.</p></div></div><div class="step"><div class="bubble">3</div><div><strong>Problem question</strong><p>Ask one sharp question, then stop talking.</p></div></div><div class="step"><div class="bubble">4</div><div><strong>Value bridge</strong><p>Map confirmed pain to a specific Renterra module.</p></div></div><div class="step"><div class="bubble">5</div><div><strong>Close</strong><p>Ask for 20 minutes, not a buying decision.</p></div></div></div><div class="grid2" style="margin-top:.8rem"><div class="card"><h3>Opener script</h3><p>“I know this is out of the blue—did I catch you with 30 seconds? I’m calling because rental teams like yours often lose deals and margin in the quote-to-ready gap, and I have one idea to test quickly.”</p><h3>Hillview-specific cold open</h3><p>“I saw Hillview emphasizes rental fleet support in New England. When jobs stack up, where does pressure hit first: quoting speed, dispatch timing, or inspection proof?”</p></div><div class="card"><h3>Close script</h3><p>“If this is directionally true, the next step is a 20-minute working session with your rental/ops lead. No pitch deck—just a gap map. Would Tuesday or Wednesday be easier?”</p><h3>AE handoff framing</h3><p>“Primary pain: quote-to-readiness lag. Stakeholders: rental manager + ops lead. Desired outcome: reduce cycle time and status ambiguity before peak demand.”</p></div></div></section>
+<section id="objections"><h2>Pain mapping and objections</h2><div class="card"><table><tr><th>Pain signal</th><th>Renterra anchor</th></tr><tr><td>“We’re still on paper and spreadsheets.”</td><td>Real-time inventory + dispatch board</td></tr><tr><td>“Quotes go out and we forget about them.”</td><td>Automated quote follow-up</td></tr><tr><td>“I don’t know what’s idle vs. what’s earning.”</td><td>Utilization dashboard + revenue-per-asset</td></tr><tr><td>“Customers keep asking to book online.”</td><td>Branded storefront + customer portal</td></tr><tr><td>“Billing is a mess at month-end.”</td><td>Automated invoicing + aging balances + payments</td></tr><tr><td>“We’re on Point of Rental but it’s clunky.”</td><td>Modern UI, mobile-first workflow, lighter implementation path</td></tr><tr><td>“Inspection photos live on someone’s phone.”</td><td>Mobile inspections tied directly to the contract record</td></tr></table></div><div class="grid2" style="margin-top:.8rem"><details><summary>We’re all set / not interested.</summary><div class="content">Totally fair. Usually that means priorities are full, not that execution is perfect. Open to a short gap-check so you can decide with data?</div></details><details><summary>We already use Point of Rental / Texada.</summary><div class="content">Makes sense. This call is about bottlenecks around the tool, not replacing your stack on day one.</div></details><details><summary>Just send me an email.</summary><div class="content">Happy to. What should I focus on so it is useful: quote speed, dispatch visibility, or collections discipline?</div></details><details><summary>We’re too small for software.</summary><div class="content">That is exactly where dropped handoffs hurt most. The goal is fewer fires for the same headcount.</div></details><details><summary>How much does it cost?</summary><div class="content">Great question. First we confirm if there is measurable upside. Then pricing has business context instead of guesswork.</div></details><details><summary>I’m too busy right now.</summary><div class="content">Understood. If I send two specific observations, can we book 20 minutes next week if they resonate?</div></details></div></section>
+<section id="gameday"><h2>Game-day execution plan</h2><div class="grid2"><div class="card"><h3>Hillview mock-call run-of-show</h3><ul><li>Cold open with permission and relevance.</li><li>Observation anchored to public rental signal.</li><li>One problem question; force a real answer.</li><li>Map answer to one Renterra workflow lane.</li><li>Close for 20-minute diagnostic with proper stakeholders.</li></ul><h3>What I’m listening for</h3><ul><li>Manual readiness checks.</li><li>Branch communication lag.</li><li>Quote follow-up ownership ambiguity.</li><li>Billing/collections friction handoff.</li></ul></div><div class="card"><h3>Do checklist</h3><ul><li>Mirror their language.</li><li>Quantify consequences of delay or misses.</li><li>Confirm who owns next step.</li></ul><h3>Don’t checklist</h3><ul><li>Do not over-explain product early.</li><li>Do not force a demo before pain is confirmed.</li><li>Do not discuss pricing before impact is established.</li></ul><h3>Day-of checklist</h3><ul><li>Open tabs: account site, source notes, script, scheduling link.</li><li>Prepare two fallback closes.</li><li>Set success criteria: meeting booked with agenda and stakeholders.</li></ul><p><strong>Successful AE handoff sounds like:</strong> “Confirmed pain, business impact, current process, stakeholders, and urgency window documented.”</p></div></div></section>
+<section id="sources"><h2>Sources &amp; research notes</h2><div class="card"><ul><li>Baseline content and structure adapted from uploaded briefing file (brief.html) and upgraded for strategy, UX, and call realism.</li><li>Renterra feature claims cross-checked on public homepage/product messaging (getrenterra.com).</li><li>Equipment East company/rental profile and expansion notes from official About page.</li><li>ATS four-location signal from public catalog PDF; treated as directional until live-confirmed.</li><li>R.S. Rental &amp; Equipment directional profile from public company and map-hours pages.</li><li>Point of Rental Essentials positioning from official product page.</li><li class="warn">Intellectual honesty note: where third-party directories/catalogs were used, claims are labeled directional or public-directory estimate. If sources conflict, the contradiction should be validated during discovery call preparation.</li></ul></div></section>
+<footer><p>Prepared as an executive-ready BDR artifact. Public facts are current to <strong>May 14, 2026</strong> based on accessible web sources and should be revalidated before live outreach.</p></footer>
+</main>
+<script>
+const secs=[...document.querySelectorAll('main section')],links=[...document.querySelectorAll('.menu a')],menu=document.getElementById('menu');
+document.getElementById('mob').onclick=()=>menu.classList.toggle('open');
+function onScroll(){const y=window.scrollY+140;secs.forEach(s=>{if(y>=s.offsetTop&&y<s.offsetTop+s.offsetHeight){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+s.id));}});const d=document.documentElement;document.getElementById('progress').style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight))*100+'%';}
+window.addEventListener('scroll',onScroll);onScroll();links.forEach(l=>l.onclick=()=>menu.classList.remove('open'));
+</script>
 </body>
 </html>
